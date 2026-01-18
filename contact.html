@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Another World Luxury Travel</title>
+    <meta name="description" content="Get in touch with Another World Luxury Travel. Contact us for personalized travel consultations and bookings.">
+    <meta name="keywords" content="contact travel agency, luxury travel consultation, travel bookings, customer support">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #00A8E8;
+            --accent: #FFD166;
+            --dark: #0A2463;
+            --light: #F8F9FA;
+            --success: #06D6A0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0A2463 0%, #1E3A8A 50%, #3B82F6 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Navigation */
+        .nav-glass {
+            background: rgba(10, 36, 99, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-glass.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #DDD;
+            font-weight: 500;
+            padding: 8px 0;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link.active {
+            color: white;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero-contact {
+            position: relative;
+            overflow: hidden;
+            padding-top: 150px;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0A2463 0%, #1E3A8A 50%, #3B82F6 100%);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(10, 36, 99, 0.9) 0%, rgba(30, 58, 138, 0.7) 100%);
+            z-index: 2;
+        }
+        
+        /* Floating Elements Animation */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .floating-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: -150px;
+            left: -150px;
+            animation: float 25s infinite ease-in-out;
+        }
+        
+        .floating-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--secondary);
+            bottom: -100px;
+            right: -100px;
+            animation: float 20s infinite ease-in-out reverse;
+        }
+        
+        /* Contact Form */
+        .contact-form-container {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            width: 100%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+        
+        /* Contact Cards */
+        .contact-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            height: 100%;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(0, 168, 232, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--accent);
+            transition: all 0.4s ease;
+        }
+        
+        .contact-card:hover .contact-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        /* Map Container */
+        .map-container {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .map-placeholder {
+            height: 400px;
+            background: linear-gradient(135deg, #1e3a8a, #0A2463);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .map-pin {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite;
+            cursor: pointer;
+        }
+        
+        .map-pin::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-item:hover {
+            padding-left: 10px;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, margin-top 0.3s ease;
+            color: #cbd5e1;
+        }
+        
+        .faq-answer.active {
+            max-height: 500px;
+            margin-top: 15px;
+        }
+        
+        /* Team Contacts */
+        .team-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+        
+        .team-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .team-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 36, 99, 0.95), transparent);
+            padding: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Live Chat */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.6);
+        }
+        
+        .chat-container {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.95), rgba(10, 36, 99, 0.98));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            display: none;
+            overflow: hidden;
+        }
+        
+        .chat-container.active {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .success-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.95), rgba(10, 36, 99, 0.98));
+            border-radius: 25px;
+            padding: 50px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .success-modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            animation: fadeInRight 0.8s ease forwards;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Section Title */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        /* Office Hours */
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(30, 58, 138, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .hours-table th {
+            background: rgba(255, 107, 53, 0.2);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .hours-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hours-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 36, 99, 0.8);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            border: 3px solid rgba(10, 36, 99, 0.8);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #FF8C42, var(--secondary));
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-contact {
+                min-height: 50vh;
+                padding-top: 120px;
+            }
+            
+            .chat-container {
+                width: 300px;
+                right: -50px;
+            }
+            
+            .map-placeholder {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-glass" id="navbar">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 hover-lift">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center shadow-lg pulse-animation">
+                        <i class="fas fa-globe-americas text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold font-heading">
+                            <span class="text-white">ANOTHER</span>
+                            <span class="gradient-text">WORLD</span>
+                        </h1>
+                        <p class="text-xs text-gray-300 mt-1">Luxury Travel Experiences</p>
+                    </div>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="destinations.html" class="nav-link">Destinations</a>
+                    <a href="packages.html" class="nav-link">Packages</a>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                    <button class="btn-primary text-sm">
+                        <i class="fas fa-rocket mr-2"></i> Book Now
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-2xl text-white focus:outline-none hover:scale-110 transition-all duration-300" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="lg:hidden mt-4 hidden bg-gray-900/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl" id="mobileMenu">
+                <div class="flex flex-col space-y-5">
+                    <a href="index.html" class="nav-link py-3 px-4 rounded-lg">Home</a>
+                    <a href="destinations.html" class="nav-link py-3 px-4 rounded-lg">Destinations</a>
+                    <a href="packages.html" class="nav-link py-3 px-4 rounded-lg">Packages</a>
+                    <a href="about.html" class="nav-link py-3 px-4 rounded-lg">About Us</a>
+                    <a href="contact.html" class="nav-link active py-3 px-4 rounded-lg">Contact</a>
+                    <button class="btn-primary w-full mt-3 py-4">
+                        <i class="fas fa-rocket mr-2"></i> Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-contact">
+        <!-- Background Elements -->
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        
+        <div class="container mx-auto px-4 lg:px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-full text-sm font-semibold mb-8 shadow-lg">
+                    <i class="fas fa-headset mr-2"></i> Contact Support
+                </span>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                    <span class="block text-white">Let's Plan Your</span>
+                    <span class="block gradient-text mt-3">Next Adventure</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto">
+                    Our travel experts are ready to create your perfect journey. Reach out to us anytime - we're here to help 24/7.
+                </p>
+                
+                <!-- Quick Contact -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold gradient-text mb-2">24/7</div>
+                        <div class="text-gray-400">Support Available</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold gradient-text mb-2">1 Hour</div>
+                        <div class="text-gray-400">Response Time</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold gradient-text mb-2">100%</div>
+                        <div class="text-gray-400">Satisfaction</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold gradient-text mb-2">5 Star</div>
+                        <div class="text-gray-400">Service Rating</div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="btn-primary px-10 py-4 text-lg" id="startChatBtn">
+                        <i class="fas fa-comment-dots mr-2"></i> Start Live Chat
+                    </button>
+                    <button class="btn-secondary px-10 py-4 text-lg" onclick="window.location.href='tel:+15551234567'">
+                        <i class="fas fa-phone mr-2"></i> Call Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="py-20" style="background: rgba(10, 36, 99, 0.5);">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="contact-form-container p-8 lg:p-12 fade-in-up">
+                    <h2 class="text-3xl font-heading font-bold mb-2">Send Us a Message</h2>
+                    <p class="text-gray-400 mb-8">Fill out the form below and our team will get back to you within 1 hour.</p>
+                    
+                    <form id="contactForm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" placeholder="John" required>
+                            </div>
+                            <div>
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="+1 (555) 123-4567">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="form-label">Destination Interest</label>
+                            <select class="form-input" required>
+                                <option value="">Select Destination</option>
+                                <option value="northern-lights">Northern Lights Expedition</option>
+                                <option value="maldivian">Maldivian Paradise Escape</option>
+                                <option value="japanese">Japanese Zen Retreat</option>
+                                <option value="safari">African Safari Adventure</option>
+                                <option value="mediterranean">Mediterranean Cruise</option>
+                                <option value="alpine">Swiss Alpine Adventure</option>
+                                <option value="custom">Custom Itinerary</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="form-label">Travel Dates</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="date" class="form-input" placeholder="Start Date">
+                                <input type="date" class="form-input" placeholder="End Date">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="form-label">Number of Travelers</label>
+                            <div class="grid grid-cols-4 gap-4">
+                                <button type="button" class="traveler-btn bg-gray-800 rounded-lg py-3 hover:bg-gray-700 transition active">1</button>
+                                <button type="button" class="traveler-btn bg-gray-800 rounded-lg py-3 hover:bg-gray-700 transition">2</button>
+                                <button type="button" class="traveler-btn bg-gray-800 rounded-lg py-3 hover:bg-gray-700 transition">3-5</button>
+                                <button type="button" class="traveler-btn bg-gray-800 rounded-lg py-3 hover:bg-gray-700 transition">6+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="form-label">Your Message</label>
+                            <textarea class="form-input h-40" placeholder="Tell us about your dream journey..." required></textarea>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-5 h-5 rounded" required>
+                                <span class="text-gray-300">I agree to receive travel updates and offers from Another World</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary w-full py-4 text-lg">
+                            <i class="fas fa-paper-plane mr-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="fade-in-up">
+                    <h2 class="text-3xl font-heading font-bold mb-8">Contact Information</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Our Office</h3>
+                            <p class="text-gray-400 mb-2">
+                                Cosmic Plaza, 42 Stellar Avenue<br>
+                                New York, NY 10001<br>
+                                United States
+                            </p>
+                            <button class="text-orange-400 hover:text-orange-300 transition mt-2" onclick="window.open('https://www.google.com/maps?q=Cosmic+Plaza+42+Stellar+Avenue+New+York+NY+10001', '_blank')">
+                                <i class="fas fa-directions mr-2"></i> Get Directions
+                            </button>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Phone Numbers</h3>
+                            <p class="text-gray-400 mb-2">
+                                <strong>Sales:</strong> +1 (555) 123-4567<br>
+                                <strong>Support:</strong> +1 (555) 987-6543<br>
+                                <strong>Emergency:</strong> +1 (555) 999-8888
+                            </p>
+                            <button class="text-orange-400 hover:text-orange-300 transition mt-2" onclick="window.location.href='tel:+15551234567'">
+                                <i class="fas fa-phone mr-2"></i> Call Now
+                            </button>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Email Addresses</h3>
+                            <p class="text-gray-400 mb-2">
+                                <strong>General:</strong> info@anotherworld.com<br>
+                                <strong>Sales:</strong> sales@anotherworld.com<br>
+                                <strong>Support:</strong> support@anotherworld.com
+                            </p>
+                            <button class="text-orange-400 hover:text-orange-300 transition mt-2" onclick="window.location.href='mailto:info@anotherworld.com'">
+                                <i class="fas fa-envelope mr-2"></i> Send Email
+                            </button>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Office Hours</h3>
+                            <p class="text-gray-400 mb-2">
+                                <strong>Mon-Fri:</strong> 9:00 AM - 6:00 PM EST<br>
+                                <strong>Saturday:</strong> 10:00 AM - 4:00 PM EST<br>
+                                <strong>Sunday:</strong> By Appointment Only
+                            </p>
+                            <button class="text-orange-400 hover:text-orange-300 transition mt-2">
+                                <i class="fas fa-calendar mr-2"></i> Book Appointment
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Live Chat -->
+                    <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-comments text-orange-400 mr-3"></i> Live Chat Support
+                        </h3>
+                        <p class="text-gray-400 mb-4">Chat with our travel experts in real-time for instant assistance.</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                <span class="text-green-400 text-sm">Online Now</span>
+                            </div>
+                            <span class="text-gray-400 text-sm">• Average wait time: 2 minutes</span>
+                        </div>
+                        <button class="btn-secondary w-full mt-4" id="startChatBtn2">
+                            <i class="fas fa-comment-dots mr-2"></i> Start Live Chat
+                        </button>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon w-12 h-12">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map & Office Hours -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Map -->
+                <div class="fade-in-left">
+                    <h2 class="text-3xl font-heading font-bold mb-8">Find Our Office</h2>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <div class="text-center">
+                                <i class="fas fa-map-marked-alt text-4xl text-orange-400 mb-4"></i>
+                                <p class="text-white font-semibold">Interactive Map</p>
+                                <p class="text-gray-300 text-sm">Showing office location in New York</p>
+                            </div>
+                            
+                            <!-- Map Pins -->
+                            <div class="map-pin" style="top: 50%; left: 50%;" title="Main Office"></div>
+                            <div class="map-pin" style="top: 40%; left: 60%;" title="Support Center"></div>
+                            <div class="map-pin" style="top: 60%; left: 40%;" title="Meeting Rooms"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold">Another World HQ</h4>
+                                    <p class="text-gray-400 text-sm">Cosmic Plaza, New York</p>
+                                </div>
+                                <button class="btn-secondary px-4 py-2 text-sm" onclick="window.open('https://www.google.com/maps?q=Cosmic+Plaza+42+Stellar+Avenue+New+York+NY+10001', '_blank')">
+                                    <i class="fas fa-directions mr-2"></i> Directions
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Office Hours -->
+                <div class="fade-in-right">
+                    <h2 class="text-3xl font-heading font-bold mb-8">Global Office Hours</h2>
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8">
+                        <table class="hours-table">
+                            <thead>
+                                <tr>
+                                    <th>Office</th>
+                                    <th>Time Zone</th>
+                                    <th>Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>New York (HQ)</td>
+                                    <td>EST (GMT-5)</td>
+                                    <td>9:00 AM - 6:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>London</td>
+                                    <td>GMT (GMT+0)</td>
+                                    <td>9:00 AM - 6:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Dubai</td>
+                                    <td>GST (GMT+4)</td>
+                                    <td>10:00 AM - 7:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Singapore</td>
+                                    <td>SGT (GMT+8)</td>
+                                    <td>9:00 AM - 6:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Sydney</td>
+                                    <td>AEST (GMT+10)</td>
+                                    <td>8:00 AM - 5:00 PM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="mt-8 p-4 bg-orange-400/10 rounded-lg">
+                            <h4 class="font-bold text-orange-400 mb-2">
+                                <i class="fas fa-info-circle mr-2"></i> 24/7 Emergency Support
+                            </h4>
+                            <p class="text-gray-300 text-sm">
+                                For urgent travel assistance outside office hours, call our emergency line: 
+                                <span class="font-bold text-white">+1 (555) 999-8888</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Contacts -->
+    <section class="py-20" style="background: rgba(10, 36, 99, 0.5);">
+        <div class="container mx-auto px-4 lg:px-6">
+            <h2 class="section-title text-3xl md:text-4xl font-heading font-bold mb-12 text-center">
+                Meet Our <span class="gradient-text">Travel Experts</span>
+            </h2>
+            
+            <div class="team-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card fade-in-up" style="animation-delay: 0.1s">
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="team-overlay">
+                            <h3 class="text-xl font-bold">Sarah Johnson</h3>
+                            <p class="text-gray-300">Senior Travel Consultant</p>
+                            <div class="social-links">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-green-400 text-sm">Available Now</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Specializes in luxury European and Asian destinations with 15+ years of experience.</p>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-star text-yellow-400 mr-2"></i> 4.9/5 Client Rating
+                        </div>
+                        <button class="text-orange-400 hover:text-orange-300 transition mt-4">
+                            <i class="fas fa-calendar mr-2"></i> Book Consultation
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-card fade-in-up" style="animation-delay: 0.2s">
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="team-overlay">
+                            <h3 class="text-xl font-bold">Michael Chen</h3>
+                            <p class="text-gray-300">Adventure Travel Expert</p>
+                            <div class="social-links">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-green-400 text-sm">Available Now</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Expert in safari adventures, mountain expeditions, and extreme destinations.</p>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-star text-yellow-400 mr-2"></i> 5.0/5 Client Rating
+                        </div>
+                        <button class="text-orange-400 hover:text-orange-300 transition mt-4">
+                            <i class="fas fa-calendar mr-2"></i> Book Consultation
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-card fade-in-up" style="animation-delay: 0.3s">
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="team-overlay">
+                            <h3 class="text-xl font-bold">Jessica Williams</h3>
+                            <p class="text-gray-300">Luxury Cruise Specialist</p>
+                            <div class="social-links">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-2 h-2 bg-yellow-500 rounded-full mr-2"></div>
+                            <span class="text-yellow-400 text-sm">Away</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Specialist in luxury yacht charters, Mediterranean cruises, and private island getaways.</p>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-star text-yellow-400 mr-2"></i> 4.8/5 Client Rating
+                        </div>
+                        <button class="text-gray-400 mt-4 cursor-not-allowed">
+                            <i class="fas fa-calendar mr-2"></i> Currently Unavailable
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 lg:px-6">
+            <h2 class="section-title text-3xl md:text-4xl font-heading font-bold mb-12 text-center">
+                Frequently Asked <span class="gradient-text">Questions</span>
+            </h2>
+            
+            <div class="faq-container max-w-3xl mx-auto p-8 fade-in-up">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How quickly will I receive a response to my inquiry?</span>
+                        <i class="fas fa-chevron-down text-orange-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300">We pride ourselves on our quick response times. You'll typically receive an initial response within 1 hour during business hours, and within 4 hours outside of business hours. For urgent matters, please call our emergency line.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What information should I include in my travel inquiry?</span>
+                        <i class="fas fa-chevron-down text-orange-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300">For the most accurate consultation, please include: your desired destination(s), travel dates, number of travelers, budget range, travel style preferences (luxury, adventure, relaxation, etc.), and any special requirements or interests.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer virtual consultations?</span>
+                        <i class="fas fa-chevron-down text-orange-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300">Yes! We offer virtual consultations via Zoom, Google Meet, or phone call. You can book a virtual consultation through our online booking system or by calling our office. Sessions typically last 30-60 minutes.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are your office hours in different time zones?</span>
+                        <i class="fas fa-chevron-down text-orange-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300">We have offices in New York (EST), London (GMT), Dubai (GST), Singapore (SGT), and Sydney (AEST). Each office operates from 9 AM to 6 PM local time, Monday through Friday. Our 24/7 emergency support line is always available for urgent travel assistance.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I schedule an in-person consultation?</span>
+                        <i class="fas fa-chevron-down text-orange-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300">You can schedule an in-person consultation at any of our global offices by calling our booking line or using the "Book Appointment" button on this page. Please specify which office location you'd prefer when booking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-green-400 text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Message Sent Successfully!</h3>
+            <p class="text-gray-300 mb-6">
+                Thank you for contacting Another World. Our travel expert will get back to you within 1 hour. You'll also receive a confirmation email shortly.
+            </p>
+            <div class="flex space-x-4">
+                <button class="btn-primary flex-1" id="closeSuccessModal">
+                    <i class="fas fa-home mr-2"></i> Back to Home
+                </button>
+                <button class="btn-secondary flex-1" id="bookNowModal">
+                    <i class="fas fa-calendar mr-2"></i> Book Consultation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-container" id="chatContainer">
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 p-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold">Live Chat Support</h4>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-green-400 text-sm">Online Now</span>
+                        </div>
+                    </div>
+                    <button class="text-gray-400 hover:text-white" id="closeChat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-4 h-64 overflow-y-auto" id="chatMessages">
+                <div class="chat-message bot mb-4">
+                    <div class="flex items-start">
+                        <div class="w-8 h-8 bg-orange-400 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-headset text-white"></i>
+                        </div>
+                        <div class="bg-gray-800 rounded-2xl rounded-tl-none p-3 max-w-xs">
+                            <p class="text-sm">Hello! I'm Sophia, your travel consultant. How can I help you plan your next adventure?</p>
+                        </div>
+                    </div>
+                    <span class="text-gray-500 text-xs mt-1 block ml-11">Just now</span>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-gray-800">
+                <div class="flex">
+                    <input type="text" 
+                           class="form-input rounded-r-none" 
+                           placeholder="Type your message..."
+                           id="chatInput">
+                    <button class="btn-primary rounded-l-none px-6" id="sendMessage">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-button" id="chatButton">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-gray-900 to-gray-800 border-t border-gray-700 mt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 mr-4"></div>
+                        <div class="text-2xl font-bold">
+                            <span class="text-white">ANOTHER</span>
+                            <span class="gradient-text">WORLD</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-lg">Creating extraordinary travel experiences that exceed expectations.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">Home</a></li>
+                        <li><a href="destinations.html" class="text-orange-400 font-semibold text-lg hover:translate-x-2 transition-all duration-300 inline-block">Destinations</a></li>
+                        <li><a href="packages.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">Packages</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">About Us</a></li>
+                        <li><a href="contact.html" class="text-orange-400 font-semibold text-lg hover:translate-x-2 transition-all duration-300 inline-block">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Contact Information</h3>
+                    <ul class="space-y-4 text-gray-400 text-lg">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-orange-500 mr-4"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-orange-500 mr-4"></i>
+                            <span>info@anotherworld.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-orange-500 mr-4"></i>
+                            <span>New York, USA</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Office Hours</h3>
+                    <ul class="space-y-2 text-gray-400 text-lg">
+                        <li>Monday - Friday: 9AM - 6PM</li>
+                        <li>Saturday: 10AM - 4PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-500 text-lg">
+                <p>&copy; 2023 Another World Travel Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            menuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Traveler buttons
+            const travelerBtns = document.querySelectorAll('.traveler-btn');
+            travelerBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    travelerBtns.forEach(b => b.classList.remove('active', 'bg-orange-400', 'text-white'));
+                    this.classList.add('active', 'bg-orange-400', 'text-white');
+                });
+            });
+            
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('i');
+                
+                question.addEventListener('click', function() {
+                    // Toggle current item
+                    answer.classList.toggle('active');
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                    
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.querySelector('.faq-answer').classList.remove('active');
+                            otherItem.querySelector('i').classList.remove('fa-chevron-up');
+                            otherItem.querySelector('i').classList.add('fa-chevron-down');
+                        }
+                    });
+                });
+            });
+            
+            // Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+            const successModal = document.getElementById('successModal');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show success modal
+                successModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Reset form
+                contactForm.reset();
+                travelerBtns.forEach(btn => btn.classList.remove('active', 'bg-orange-400', 'text-white'));
+                travelerBtns[0].classList.add('active', 'bg-orange-400', 'text-white');
+            });
+            
+            // Success Modal Close
+            const closeSuccessModal = document.getElementById('closeSuccessModal');
+            const bookNowModal = document.getElementById('bookNowModal');
+            
+            closeSuccessModal.addEventListener('click', function() {
+                successModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                window.location.href = 'index.html';
+            });
+            
+            bookNowModal.addEventListener('click', function() {
+                successModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                window.location.href = 'packages.html';
+            });
+            
+            // Close modal on background click
+            successModal.addEventListener('click', function(e) {
+                if (e.target === successModal) {
+                    successModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Live Chat Widget
+            const chatButton = document.getElementById('chatButton');
+            const chatContainer = document.getElementById('chatContainer');
+            const closeChat = document.getElementById('closeChat');
+            const startChatBtn = document.getElementById('startChatBtn');
+            const startChatBtn2 = document.getElementById('startChatBtn2');
+            const chatInput = document.getElementById('chatInput');
+            const sendMessage = document.getElementById('sendMessage');
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Toggle chat
+            chatButton.addEventListener('click', function() {
+                chatContainer.classList.toggle('active');
+            });
+            
+            if (startChatBtn) {
+                startChatBtn.addEventListener('click', function() {
+                    chatContainer.classList.add('active');
+                });
+            }
+            
+            if (startChatBtn2) {
+                startChatBtn2.addEventListener('click', function() {
+                    chatContainer.classList.add('active');
+                });
+            }
+            
+            closeChat.addEventListener('click', function() {
+                chatContainer.classList.remove('active');
+            });
+            
+            // Send message
+            function sendChatMessage(message, isUser = true) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${isUser ? 'user' : 'bot'} mb-4`;
+                
+                if (isUser) {
+                    messageDiv.innerHTML = `
+                        <div class="flex items-start justify-end">
+                            <div class="bg-orange-400 rounded-2xl rounded-tr-none p-3 max-w-xs">
+                                <p class="text-sm text-white">${message}</p>
+                            </div>
+                            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center ml-3">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                        </div>
+                        <span class="text-gray-500 text-xs mt-1 block text-right">Just now</span>
+                    `;
+                } else {
+                    messageDiv.innerHTML = `
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-orange-400 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-headset text-white"></i>
+                            </div>
+                            <div class="bg-gray-800 rounded-2xl rounded-tl-none p-3 max-w-xs">
+                                <p class="text-sm">${message}</p>
+                            </div>
+                        </div>
+                        <span class="text-gray-500 text-xs mt-1 block ml-11">Just now</span>
+                    `;
+                }
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Bot responses
+            const botResponses = [
+                "That sounds exciting! Tell me more about your travel preferences.",
+                "I'd love to help you plan that. When are you thinking of traveling?",
+                "Great choice! I can help you customize that experience. What's your budget range?",
+                "I have some amazing recommendations for that destination. How many people will be traveling?",
+                "Perfect! I'll connect you with one of our destination specialists for detailed planning.",
+                "I'm checking availability for those dates. Would you like me to hold a provisional booking?"
+            ];
+            
+            sendMessage.addEventListener('click', function() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    sendChatMessage(message, true);
+                    chatInput.value = '';
+                    
+                    // Bot response after delay
+                    setTimeout(() => {
+                        const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+                        sendChatMessage(randomResponse, false);
+                    }, 1000);
+                }
+            });
+            
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage.click();
+                }
+            });
+            
+            // Map pin interactions
+            const mapPins = document.querySelectorAll('.map-pin');
+            mapPins.forEach(pin => {
+                pin.addEventListener('mouseenter', function() {
+                    this.style.animationPlayState = 'paused';
+                    this.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                });
+                
+                pin.addEventListener('mouseleave', function() {
+                    this.style.animationPlayState = 'running';
+                    this.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+                
+                pin.addEventListener('click', function() {
+                    const title = this.getAttribute('title');
+                    showNotification(`Selected: ${title}. Opening directions...`);
+                });
+            });
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Book Now buttons
+            document.querySelectorAll('.btn-primary').forEach(button => {
+                if (button.textContent.includes('Book Now')) {
+                    button.addEventListener('click', function() {
+                        window.location.href = 'packages.html';
+                    });
+                }
+            });
+            
+            // Floating elements animation
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 5}s`;
+            });
+            
+            // Function to show notification
+            function showNotification(message) {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-6 right-6 bg-orange-400 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+                notification.textContent = message;
+                
+                // Add to body
+                document.body.appendChild(notification);
+                
+                // Animate in
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 10);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+            
+            // Parallax effect for hero section
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero-contact');
+                if (hero) {
+                    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+                }
+                
+                // Move floating elements
+                const floatingElements = document.querySelectorAll('.floating-element');
+                floatingElements.forEach((el, index) => {
+                    const speed = 0.1 + (index * 0.05);
+                    const yOffset = scrolled * speed;
+                    el.style.transform = `translateY(${yOffset}px) rotate(${scrolled * 0.1}deg)`;
+                });
+            });
+            
+            // Initialize animations
+            setTimeout(() => {
+                // Add staggered animations
+                const fadeElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+                fadeElements.forEach((el, index) => {
+                    el.style.animationDelay = `${index * 0.1}s`;
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another World | Luxury Travel Experiences</title>
+    <meta name="description" content="Discover a world of luxury adventures with Another World - exceptional destinations, customized journeys, and memories that last a lifetime">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #00A8E8;
+            --accent: #FFD166;
+            --dark: #0A2463;
+            --light: #F8F9FA;
+            --success: #06D6A0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0A2463 0%, #1E3A8A 50%, #3B82F6 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+        }
+        
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease-out;
+        }
+        
+        /* Navigation */
+        .nav-glass {
+            background: rgba(10, 36, 99, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-glass.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #DDD;
+            font-weight: 500;
+            padding: 8px 0;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link.active {
+            color: white;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0A2463 0%, #1E3A8A 50%, #3B82F6 100%);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(10, 36, 99, 0.9) 0%, rgba(30, 58, 138, 0.7) 100%);
+            z-index: 2;
+        }
+        
+        /* Floating Elements Animation */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .floating-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: -150px;
+            left: -150px;
+            animation: float 25s infinite ease-in-out;
+        }
+        
+        .floating-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--secondary);
+            bottom: -100px;
+            right: -100px;
+            animation: float 20s infinite ease-in-out reverse;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: rgba(30, 58, 138, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.6), rgba(10, 36, 99, 0.8));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .stat-card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Featured Destinations */
+        .destination-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 
+                        0 0 30px rgba(255, 107, 53, 0.2);
+        }
+        
+        .card-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        
+        .destination-card:hover .card-image {
+            transform: scale(1.1);
+        }
+        
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 36, 99, 0.95), transparent);
+            padding: 25px;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 2;
+        }
+        
+        .destination-card:hover .card-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+            display: inline-block;
+        }
+        
+        /* Features Section */
+        .feature-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.6), rgba(10, 36, 99, 0.8));
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(0, 168, 232, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--accent);
+            transition: all 0.4s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        /* Packages Section */
+        .package-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+        
+        .package-card.featured {
+            transform: scale(1.05);
+            border-color: var(--accent);
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.9), rgba(10, 36, 99, 0.95));
+        }
+        
+        .package-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.6), rgba(10, 36, 99, 0.8));
+            border-radius: 20px;
+            padding: 35px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .client-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            padding: 3px;
+        }
+        
+        /* Newsletter */
+        .newsletter-section {
+            background: linear-gradient(135deg, #0A2463 0%, #1E3A8A 100%);
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .newsletter-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF6B35' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        /* Animations Keyframes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            animation: fadeInRight 0.8s ease forwards;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        .bounce-animation {
+            animation: bounce 3s infinite ease-in-out;
+        }
+        
+        .spin-animation {
+            animation: spin 1s linear infinite;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s ease infinite;
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        /* Interactive Background Elements */
+        .interactive-bg {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 36, 99, 0.8);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            border: 3px solid rgba(10, 36, 99, 0.8);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #FF8C42, var(--secondary));
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 80vh;
+                padding-top: 80px;
+            }
+            
+            .nav-link {
+                margin: 0 10px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .destination-card {
+                margin-bottom: 30px;
+            }
+            
+            .cursor-dot, .cursor-outline {
+                display: none;
+            }
+            
+            .package-card.featured {
+                transform: scale(1);
+            }
+            
+            .package-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+        
+        /* Glow Effect */
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .glow-effect:hover {
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.5);
+        }
+        
+        /* Star Rating */
+        .star-rating {
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .star-rating i {
+            color: var(--accent);
+            margin-right: 2px;
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-primary {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background: linear-gradient(135deg, var(--secondary), #00C6FF);
+            color: white;
+        }
+        
+        .badge-accent {
+            background: linear-gradient(135deg, var(--accent), #FFE082);
+            color: #333;
+        }
+        
+        /* Countdown Timer */
+        .countdown-timer {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 70px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Video Modal */
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .video-container {
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.5s ease 0.2s;
+        }
+        
+        .video-modal.active .video-container {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .video-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--primary);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .video-close:hover {
+            transform: rotate(90deg);
+            background: #FF8C42;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
+    <!-- Interactive Background Elements -->
+    <div class="interactive-bg" style="top: 15%; left: 8%; width: 120px; height: 120px; background: radial-gradient(circle, var(--primary) 0%, transparent 70%); opacity: 0.15; animation: float 6s ease-in-out infinite;"></div>
+    <div class="interactive-bg" style="top: 65%; right: 10%; width: 160px; height: 160px; background: radial-gradient(circle, var(--secondary) 0%, transparent 70%); opacity: 0.12; animation: float 8s ease-in-out infinite reverse;"></div>
+    <div class="interactive-bg" style="bottom: 25%; left: 20%; width: 90px; height: 90px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: 0.2; animation: float 7s ease-in-out infinite;"></div>
+    
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <button class="video-close" id="closeVideo">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="relative pt-[56.25%] rounded-2xl overflow-hidden">
+                <iframe class="absolute top-0 left-0 w-full h-full" 
+                        src="https://www.youtube.com/embed/BHACKCNDMW8?rel=0&modestbranding=1&autoplay=0" 
+                        title="Another World Luxury Travel"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-glass" id="navbar">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 hover-lift">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center shadow-lg pulse-animation">
+                        <i class="fas fa-globe-americas text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold font-heading">
+                            <span class="text-white">ANOTHER</span>
+                            <span class="gradient-text">WORLD</span>
+                        </h1>
+                        <p class="text-xs text-gray-300 mt-1">Luxury Travel Experiences</p>
+                    </div>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="destinations.html" class="nav-link">Destinations</a>
+                    <a href="packages.html" class="nav-link">Packages</a>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <button class="btn-primary text-sm">
+                        <i class="fas fa-rocket mr-2"></i> Book Now
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-2xl text-white focus:outline-none hover:scale-110 transition-all duration-300" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="lg:hidden mt-4 hidden bg-gray-900/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl" id="mobileMenu">
+                <div class="flex flex-col space-y-5">
+                    <a href="index.html" class="nav-link active py-3 px-4 rounded-lg">Home</a>
+                    <a href="destinations.html" class="nav-link py-3 px-4 rounded-lg">Destinations</a>
+                    <a href="packages.html" class="nav-link py-3 px-4 rounded-lg">Packages</a>
+                    <a href="about.html" class="nav-link py-3 px-4 rounded-lg">About Us</a>
+                    <a href="contact.html" class="nav-link py-3 px-4 rounded-lg">Contact</a>
+                    <button class="btn-primary w-full mt-3 py-4">
+                        <i class="fas fa-rocket mr-2"></i> Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Background Elements -->
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        
+        <div class="container mx-auto px-4 lg:px-6 relative z-10">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <span class="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-full text-sm font-semibold mb-8 shadow-lg">
+                    <i class="fas fa-crown mr-2"></i> Luxury Travel Since 2008
+                </span>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                    <span class="block">Discover Your</span>
+                    <span class="block gradient-text mt-3">Next Adventure</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto">
+                    Curated luxury travel experiences that transport you to the world's most breathtaking destinations. From aurora-lit skies to tropical paradises.
+                </p>
+                
+                <!-- Countdown Timer -->
+                <div class="mb-12">
+                    <p class="text-gray-300 mb-4">Next group departure in:</p>
+                    <div class="countdown-timer">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">14</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">08</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">42</div>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">19</div>
+                            <div class="countdown-label">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="btn-primary px-10 py-4 text-lg">
+                        <i class="fas fa-search mr-2"></i> Explore Destinations
+                    </button>
+                    <button class="btn-secondary px-10 py-4 text-lg" id="watchVideoBtn">
+                        <i class="fas fa-play-circle mr-2"></i> Watch Video
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 stats-section">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card fade-in" style="animation-delay: 0.1s">
+                    <div class="stat-number" id="stat1">0</div>
+                    <div class="font-bold text-lg mb-2 text-white">Luxury Destinations</div>
+                    <div class="text-gray-300">Worldwide</div>
+                </div>
+                
+                <div class="stat-card fade-in" style="animation-delay: 0.2s">
+                    <div class="stat-number" id="stat2">0</div>
+                    <div class="font-bold text-lg mb-2 text-white">Happy Travelers</div>
+                    <div class="text-gray-300">Successful Experiences</div>
+                </div>
+                
+                <div class="stat-card fade-in" style="animation-delay: 0.3s">
+                    <div class="stat-number" id="stat3">98%</div>
+                    <div class="font-bold text-lg mb-2 text-white">Client Satisfaction</div>
+                    <div class="text-gray-300">Excellent Rating</div>
+                </div>
+                
+                <div class="stat-card fade-in" style="animation-delay: 0.4s">
+                    <div class="stat-number" id="stat4">15</div>
+                    <div class="font-bold text-lg mb-2 text-white">Years of Excellence</div>
+                    <div class="text-gray-300">In Travel Industry</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-white">Featured Destinations</h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto mt-8">
+                    Explore our handpicked selection of the world's most extraordinary destinations
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Destination 1 -->
+                <div class="destination-card fade-in card-3d" style="animation-delay: 0.1s">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge badge-primary">
+                                <i class="fas fa-fire mr-1"></i> Trending
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-overlay">
+                        <h3 class="text-2xl font-bold mb-2">Iceland</h3>
+                        <p class="text-gray-200 mb-4">Northern Lights Expedition</p>
+                        <div class="flex items-center">
+                            <div class="star-rating mr-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="font-bold">4.8</span>
+                            <span class="text-gray-300 ml-2">(128 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Iceland</h3>
+                                <p class="text-gray-300">Northern Lights Expedition</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="price-tag">$3,299</div>
+                                <div class="text-gray-400 text-sm mt-1 line-through">$3,699</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6">Witness the celestial dance of auroras in Iceland's remote wilderness with luxury glass igloo stays.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                <span>8 Days / 7 Nights</span>
+                            </div>
+                            <button class="btn-primary px-6 py-2 text-sm view-details">
+                                <i class="fas fa-arrow-right mr-2"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 2 -->
+                <div class="destination-card fade-in card-3d" style="animation-delay: 0.2s">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge badge-accent">
+                                <i class="fas fa-heart mr-1"></i> Romantic
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-overlay">
+                        <h3 class="text-2xl font-bold mb-2">Maldives</h3>
+                        <p class="text-gray-200 mb-4">Tropical Paradise Escape</p>
+                        <div class="flex items-center">
+                            <div class="star-rating mr-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="font-bold">5.0</span>
+                            <span class="text-gray-300 ml-2">(215 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Maldives</h3>
+                                <p class="text-gray-300">Tropical Paradise Escape</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="price-tag">$4,599</div>
+                                <div class="text-gray-400 text-sm mt-1 line-through">$4,999</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6">Luxury overwater villas with private pools and breathtaking ocean views in the Maldives.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                <span>10 Days / 9 Nights</span>
+                            </div>
+                            <button class="btn-primary px-6 py-2 text-sm view-details">
+                                <i class="fas fa-arrow-right mr-2"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 3 -->
+                <div class="destination-card fade-in card-3d" style="animation-delay: 0.3s">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge badge-secondary">
+                                <i class="fas fa-landmark mr-1"></i> Cultural
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-overlay">
+                        <h3 class="text-2xl font-bold mb-2">Japan</h3>
+                        <p class="text-gray-200 mb-4">Zen & Culture Retreat</p>
+                        <div class="flex items-center">
+                            <div class="star-rating mr-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="font-bold">4.9</span>
+                            <span class="text-gray-300 ml-2">(156 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Japan</h3>
+                                <p class="text-gray-300">Zen & Culture Retreat</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="price-tag">$4,199</div>
+                                <div class="text-gray-400 text-sm mt-1 line-through">$4,599</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6">Authentic Japanese experience with traditional ryokan stays, tea ceremonies, and ancient temple tours.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                <span>12 Days / 11 Nights</span>
+                            </div>
+                            <button class="btn-primary px-6 py-2 text-sm view-details">
+                                <i class="fas fa-arrow-right mr-2"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in" style="animation-delay: 0.4s">
+                <a href="destinations.html" class="btn-secondary px-10 py-3 text-lg">
+                    <i class="fas fa-globe-americas mr-2"></i> View All Destinations
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20" style="background: rgba(10, 36, 99, 0.5);">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-white">Why Choose Another World?</h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto mt-8">
+                    We provide more than just travel - we create lifelong memories with premium services
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card fade-in" style="animation-delay: 0.1s">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Expert Curated</h3>
+                    <p class="text-gray-300">Each destination is personally selected by our travel experts with decades of experience.</p>
+                </div>
+                
+                <div class="feature-card fade-in" style="animation-delay: 0.2s">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Premium Safety</h3>
+                    <p class="text-gray-300">Your safety is our priority with 24/7 support and comprehensive travel insurance.</p>
+                </div>
+                
+                <div class="feature-card fade-in" style="animation-delay: 0.3s">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Exclusive Access</h3>
+                    <p class="text-gray-300">Special access to private locations and experiences not available to the general public.</p>
+                </div>
+                
+                <div class="feature-card fade-in" style="animation-delay: 0.4s">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Personalized Service</h3>
+                    <p class="text-gray-300">Customize every aspect of your journey with our dedicated travel designers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Packages -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-white">Popular Travel Packages</h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto mt-8">
+                    Choose from our carefully curated luxury travel packages for unforgettable experiences
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="package-card fade-in" style="animation-delay: 0.1s">
+                    <div class="text-center mb-6">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-safari"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold my-4 text-white">Safari Adventure</h3>
+                        <div class="text-4xl font-bold gradient-text mb-2">$5,299</div>
+                        <div class="text-gray-400 mb-6">per person</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">12 Days in Africa</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Luxury Safari Lodges</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Private Game Drives</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Gourmet Dining</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="btn-primary w-full">
+                        <i class="fas fa-calendar-check mr-2"></i> Book This Package
+                    </button>
+                </div>
+                
+                <!-- Package 2 (Featured) -->
+                <div class="package-card featured fade-in" style="animation-delay: 0.2s">
+                    <div class="absolute top-0 right-0">
+                        <span class="badge badge-primary rounded-bl-lg rounded-tr-lg">
+                            <i class="fas fa-crown mr-1"></i> Most Popular
+                        </span>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold my-4 text-white">Luxury Cruise</h3>
+                        <div class="text-4xl font-bold gradient-text mb-2">$7,499</div>
+                        <div class="text-gray-400 mb-6">per person</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">14-Day Mediterranean</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Suite with Balcony</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Gourmet Dining</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Private Excursions</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="btn-primary w-full">
+                        <i class="fas fa-calendar-check mr-2"></i> Book This Package
+                    </button>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="package-card fade-in" style="animation-delay: 0.3s">
+                    <div class="text-center mb-6">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold my-4 text-white">Mountain Trekking</h3>
+                        <div class="text-4xl font-bold gradient-text mb-2">$3,899</div>
+                        <div class="text-gray-400 mb-6">per person</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">10-Day Alpine Adventure</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Luxury Chalets</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Private Guide</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-gray-300">Helicopter Tours</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="btn-primary w-full">
+                        <i class="fas fa-calendar-check mr-2"></i> Book This Package
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20" style="background: rgba(10, 36, 99, 0.5);">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-white">Traveler Stories</h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto mt-8">
+                    Don't just take our word for it. Here's what our travelers have to say.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card fade-in-left" style="animation-delay: 0.1s">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="client-image mr-4">
+                        <div>
+                            <h4 class="font-bold text-lg text-white">Sarah Johnson</h4>
+                            <p class="text-gray-400 text-sm">Northern Lights Expedition</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">"The Northern Lights tour was absolutely breathtaking. Every detail was perfect, from the luxury lodge to our private guide. We saw the most amazing aurora displays of our lives!"</p>
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in" style="animation-delay: 0.2s">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="client-image mr-4">
+                        <div>
+                            <h4 class="font-bold text-lg text-white">Michael Chen</h4>
+                            <p class="text-gray-400 text-sm">Japanese Zen Retreat</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">"Another World transformed my Japan trip into a spiritual journey. The attention to detail was exceptional. The authentic Japanese experience was unforgettable."</p>
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in-right" style="animation-delay: 0.3s">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily Rodriguez" class="client-image mr-4">
+                        <div>
+                            <h4 class="font-bold text-lg text-white">Emily Rodriguez</h4>
+                            <p class="text-gray-400 text-sm">Maldivian Paradise Escape</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">"Our honeymoon in the Maldives was absolutely perfect. The overwater villa, personal service, and stunning views made this the most beautiful trip of our lives."</p>
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section py-20">
+        <div class="newsletter-pattern"></div>
+        <div class="container mx-auto px-4 lg:px-6 relative z-10">
+            <div class="max-w-3xl mx-auto text-center text-white fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Stay Inspired</h2>
+                <p class="text-xl mb-10 text-gray-200">
+                    Subscribe to receive travel inspirations and exclusive offers
+                </p>
+                
+                <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required class="flex-grow px-6 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-900 bg-white">
+                    <button type="submit" class="btn-primary px-10 py-4">
+                        <i class="fas fa-paper-plane mr-2"></i> Subscribe Now
+                    </button>
+                </form>
+                
+                <p class="text-gray-300 text-sm mt-6">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-gray-900 to-gray-800 border-t border-gray-700 mt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 mr-4"></div>
+                        <div class="text-2xl font-bold">
+                            <span class="text-white">ANOTHER</span>
+                            <span class="gradient-text">WORLD</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-lg">Creating extraordinary travel experiences that exceed expectations.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">Home</a></li>
+                        <li><a href="destinations.html" class="text-orange-400 font-semibold text-lg hover:translate-x-2 transition-all duration-300 inline-block">Destinations</a></li>
+                        <li><a href="packages.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">Packages</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Contact Information</h3>
+                    <ul class="space-y-4 text-gray-400 text-lg">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-orange-500 mr-4"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-orange-500 mr-4"></i>
+                            <span>info@anotherworld.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-orange-500 mr-4"></i>
+                            <span>New York, USA</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Office Hours</h3>
+                    <ul class="space-y-2 text-gray-400 text-lg">
+                        <li>Monday - Friday: 9AM - 6PM</li>
+                        <li>Saturday: 10AM - 4PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-500 text-lg">
+                <p>&copy; 2023 Another World Travel Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom Cursor
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            
+            window.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top = `${e.clientY}px`;
+                
+                cursorOutline.animate({
+                    left: `${e.clientX}px`,
+                    top: `${e.clientY}px`
+                }, { duration: 500, fill: 'forwards' });
+            });
+            
+            // Add hover effects to interactive elements
+            document.querySelectorAll('.destination-card, .btn-primary, .feature-card, .testimonial-card, .package-card').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorDot.style.transform = 'scale(2.5)';
+                    cursorOutline.style.transform = 'scale(1.3)';
+                    cursorOutline.style.borderColor = 'var(--primary)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursorDot.style.transform = 'scale(1)';
+                    cursorOutline.style.transform = 'scale(1)';
+                    cursorOutline.style.borderColor = 'var(--primary)';
+                });
+            });
+            
+            // Mobile menu toggle
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+            
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Animate stats
+            const stats = [
+                { element: document.getElementById('stat1'), target: 50, suffix: '+' },
+                { element: document.getElementById('stat2'), target: 5000, suffix: '+' },
+                { element: document.getElementById('stat3'), target: 98, suffix: '%' },
+                { element: document.getElementById('stat4'), target: 15, suffix: '' }
+            ];
+            
+            // Intersection Observer for stats animation
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const stat = stats.find(s => s.element === entry.target);
+                        if (stat) {
+                            animateCounter(stat.element, stat.target, stat.suffix);
+                            statsObserver.unobserve(entry.target);
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            stats.forEach(stat => {
+                if (stat.element) {
+                    statsObserver.observe(stat.element);
+                }
+            });
+            
+            // Counter animation function
+            function animateCounter(element, target, suffix) {
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current) + suffix;
+                }, 30);
+            }
+            
+            // Countdown timer
+            function updateCountdown() {
+                const now = new Date();
+                const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+                const diff = nextMonth - now;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+            
+            // Newsletter form submission
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    
+                    // Show success message
+                    const button = this.querySelector('button');
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check mr-2"></i> Successfully Subscribed!';
+                    button.style.background = 'linear-gradient(135deg, var(--success), #10B981)';
+                    
+                    // Reset after 3 seconds
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.style.background = '';
+                        this.reset();
+                    }, 3000);
+                });
+            }
+            
+            // Video modal
+            const videoModal = document.getElementById('videoModal');
+            const watchVideoBtn = document.getElementById('watchVideoBtn');
+            const closeVideo = document.getElementById('closeVideo');
+            
+            if (watchVideoBtn && videoModal) {
+                watchVideoBtn.addEventListener('click', () => {
+                    videoModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            if (closeVideo && videoModal) {
+                closeVideo.addEventListener('click', () => {
+                    videoModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+                
+                videoModal.addEventListener('click', (e) => {
+                    if (e.target === videoModal) {
+                        videoModal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (videoModal.classList.contains('active')) {
+                        videoModal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+            
+            // Add hover effects to destination cards
+            document.querySelectorAll('.destination-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) rotateX(5deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0)';
+                });
+                
+                // Click event for destination cards
+                const viewDetailsBtn = card.querySelector('.view-details');
+                if (viewDetailsBtn) {
+                    viewDetailsBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const title = card.querySelector('h3').textContent;
+                        alert(`You will be redirected to ${title} details page`);
+                    });
+                }
+                
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.view-details')) {
+                        const title = this.querySelector('h3').textContent;
+                        alert(`You will be redirected to ${title} details page`);
+                    }
+                });
+            });
+            
+            // Add click events to all buttons
+            document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (!this.href && !this.onclick && this.id !== 'watchVideoBtn') {
+                        e.preventDefault();
+                        
+                        // Add ripple effect
+                        const ripple = document.createElement('span');
+                        const rect = this.getBoundingClientRect();
+                        const size = Math.max(rect.width, rect.height);
+                        const x = e.clientX - rect.left - size / 2;
+                        const y = e.clientY - rect.top - size / 2;
+                        
+                        ripple.style.cssText = `
+                            position: absolute;
+                            border-radius: 50%;
+                            background: rgba(255, 255, 255, 0.7);
+                            transform: scale(0);
+                            animation: ripple 0.6s linear;
+                            width: ${size}px;
+                            height: ${size}px;
+                            top: ${y}px;
+                            left: ${x}px;
+                        `;
+                        
+                        this.style.position = 'relative';
+                        this.style.overflow = 'hidden';
+                        this.appendChild(ripple);
+                        
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+                        
+                        // Show booking modal or message
+                        if (this.textContent.includes('Book')) {
+                            setTimeout(() => {
+                                alert('Thank you for your interest! Our travel consultant will contact you within 24 hours.');
+                            }, 300);
+                        }
+                    }
+                });
+            });
+            
+            // Initialize animations for elements in view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+                fadeObserver.observe(el);
+            });
+            
+            // Add parallax effect to hero section
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero-section');
+                if (hero) {
+                    const rate = scrolled * -0.5;
+                    hero.style.backgroundPosition = `center ${rate}px`;
+                }
+            });
+            
+            // Initialize 3D card effects
+            document.querySelectorAll('.card-3d').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateY = (x - centerX) / 25;
+                    const rotateX = (centerY - y) / 25;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                });
+            });
+            
+            // Add typing effect to hero text
+            const heroTitle = document.querySelector('.hero-section h1 span:last-child');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                heroTitle.textContent = '';
+                heroTitle.classList.add('gradient-text');
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < originalText.length) {
+                        heroTitle.textContent += originalText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                };
+                setTimeout(typeWriter, 1000);
+            }
+            
+            // Add loading animation for featured cards
+            const featuredCards = document.querySelectorAll('.feature-card, .package-card, .destination-card');
+            featuredCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+            
+            // Add scroll to top button
+            const scrollToTopBtn = document.createElement('button');
+            scrollToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            scrollToTopBtn.className = 'fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-full shadow-lg z-40 opacity-0 transition-opacity duration-300 hover:scale-110';
+            scrollToTopBtn.style.transition = 'all 0.3s ease';
+            document.body.appendChild(scrollToTopBtn);
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.style.opacity = '1';
+                } else {
+                    scrollToTopBtn.style.opacity = '0';
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Add hover animation to social icons
+            document.querySelectorAll('footer a').forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    link.style.transform = 'translateY(-3px)';
+                });
+                link.addEventListener('mouseleave', () => {
+                    link.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add pulse animation to featured badge
+            const featuredBadge = document.querySelector('.badge-primary');
+            if (featuredBadge) {
+                setInterval(() => {
+                    featuredBadge.classList.toggle('pulse-animation');
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+</html>

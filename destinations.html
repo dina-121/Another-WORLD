@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Destinations | Another World</title>
+    <meta name="description" content="Explore world-class luxury travel destinations with premium experiences and exclusive packages">
+    <meta name="keywords" content="luxury destinations, travel packages, exotic locations, premium vacations">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #00A8E8;
+            --accent: #FFD166;
+            --dark: #0A2463;
+            --light: #F8F9FA;
+            --success: #06D6A0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0A2463 0%, #1E3A8A 50%, #3B82F6 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+        }
+        
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease-out;
+        }
+        
+        /* Navigation */
+        .nav-glass {
+            background: rgba(10, 36, 99, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 15px 0;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Destination Cards - أنيقة مع إنياشن */
+        .destination-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 
+                        0 0 30px rgba(255, 107, 53, 0.2);
+        }
+        
+        .card-image {
+            height: 220px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .destination-card:hover .card-image {
+            transform: scale(1.1);
+        }
+        
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 36, 99, 0.95), transparent);
+            padding: 25px;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+        
+        .destination-card:hover .card-overlay {
+            transform: translateY(0);
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: linear-gradient(145deg, #1E3A8A, #0A2463);
+            border-radius: 30px;
+            width: 90%;
+            max-width: 1100px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8) rotateX(10deg);
+            opacity: 0;
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1) rotateX(0);
+            opacity: 1;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 107, 53, 0.9);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .modal-close:hover {
+            background: var(--primary);
+            transform: rotate(90deg) scale(1.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .pulse-animation {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        /* Search and Filter */
+        .search-glass {
+            background: rgba(30, 58, 138, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+        }
+        
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 14px 20px;
+            width: 100%;
+            color: white;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Filter Buttons */
+        .filter-btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.3);
+        }
+        
+        .filter-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Interactive Background Elements */
+        .interactive-bg {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            height: 120px;
+            border-radius: 15px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        /* Highlights */
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-item:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateX(10px);
+            border-color: var(--primary);
+        }
+        
+        .highlight-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Stats Counter */
+        .stat-counter {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            text-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 36, 99, 0.8);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            border: 3px solid rgba(10, 36, 99, 0.8);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #FF8C42, var(--secondary));
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .destination-card:hover {
+                transform: translateY(-10px);
+            }
+            
+            .modal-content {
+                width: 95%;
+                border-radius: 20px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 100px;
+            }
+            
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
+    <!-- Interactive Background Elements -->
+    <div class="interactive-bg float-animation" style="top: 15%; left: 8%; width: 120px; height: 120px; background: radial-gradient(circle, var(--primary) 0%, transparent 70%); opacity: 0.15;"></div>
+    <div class="interactive-bg float-animation" style="top: 65%; right: 10%; width: 160px; height: 160px; background: radial-gradient(circle, var(--secondary) 0%, transparent 70%); opacity: 0.12;"></div>
+    <div class="interactive-bg float-animation" style="bottom: 25%; left: 20%; width: 90px; height: 90px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: 0.2;"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-glass">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 hover-lift">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center shadow-lg pulse-animation">
+                        <i class="fas fa-globe-americas text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">
+                            <span class="text-white">ANOTHER</span>
+                            <span class="gradient-text">WORLD</span>
+                        </h1>
+                    </div>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 text-sm font-medium">Home</a>
+                    <a href="destinations.html" class="text-white font-semibold bg-gradient-to-r from-orange-500 to-yellow-500 px-5 py-2 rounded-full text-sm hover:scale-110 transition-all duration-300">Destinations</a>
+                    <a href="packages.html" class="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 text-sm font-medium">Packages</a>
+                    <a href="about.html" class="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 text-sm font-medium">About</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 text-sm font-medium">Contact</a>
+                    <button class="btn-primary text-sm">
+                        <i class="fas fa-rocket"></i> Book Now
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-2xl text-white focus:outline-none hover:scale-110 transition-all duration-300" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="lg:hidden mt-4 hidden bg-gray-900/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl" id="mobileMenu">
+                <div class="flex flex-col space-y-5">
+                    <a href="index.html" class="text-gray-300 hover:text-white py-3 px-4 rounded-lg hover:bg-gray-800 transition-all duration-300">Home</a>
+                    <a href="destinations.html" class="bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-semibold py-3 px-4 rounded-lg">Destinations</a>
+                    <a href="packages.html" class="text-gray-300 hover:text-white py-3 px-4 rounded-lg hover:bg-gray-800 transition-all duration-300">Packages</a>
+                    <a href="about.html" class="text-gray-300 hover:text-white py-3 px-4 rounded-lg hover:bg-gray-800 transition-all duration-300">About</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white py-3 px-4 rounded-lg hover:bg-gray-800 transition-all duration-300">Contact</a>
+                    <button class="btn-primary w-full mt-3">
+                        <i class="fas fa-rocket"></i> Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                <div class="absolute top-20 left-1/4 w-72 h-72 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full filter blur-3xl"></div>
+                <div class="absolute top-1/2 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full filter blur-3xl"></div>
+                <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full filter blur-3xl"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="text-white">Discover </span>
+                    <span class="gradient-text">Extraordinary Destinations</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-10 leading-relaxed">
+                    From aurora-lit skies to tropical paradises, explore our curated collection of world-class destinations designed for unforgettable experiences.
+                </p>
+                
+                <!-- Stats Counter -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <div class="text-center bg-gray-900/50 rounded-2xl p-6 border border-gray-700 hover:border-orange-500 transition-all duration-500 hover:scale-105">
+                        <div class="stat-counter" id="counter1">0</div>
+                        <div class="text-gray-400 mt-3 font-medium">Premium Destinations</div>
+                    </div>
+                    <div class="text-center bg-gray-900/50 rounded-2xl p-6 border border-gray-700 hover:border-blue-500 transition-all duration-500 hover:scale-105">
+                        <div class="stat-counter" id="counter2">0</div>
+                        <div class="text-gray-400 mt-3 font-medium">Countries</div>
+                    </div>
+                    <div class="text-center bg-gray-900/50 rounded-2xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-500 hover:scale-105">
+                        <div class="stat-counter" id="counter3">0</div>
+                        <div class="text-gray-400 mt-3 font-medium">Travelers Served</div>
+                    </div>
+                    <div class="text-center bg-gray-900/50 rounded-2xl p-6 border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:scale-105">
+                        <div class="stat-counter" id="counter4">97</div>
+                        <div class="text-gray-400 mt-3 font-medium">% Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="py-6">
+        <div class="container mx-auto px-6">
+            <div class="search-glass max-w-6xl mx-auto mb-12 fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+                    <input type="text" 
+                           id="searchInput" 
+                           placeholder="Search destinations..." 
+                           class="form-input"
+                           onkeyup="filterDestinations()">
+                    
+                    <select id="categoryFilter" class="form-input" onchange="filterDestinations()">
+                        <option value="">All Categories</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="beach">Beach</option>
+                        <option value="cultural">Cultural</option>
+                        <option value="nature">Nature</option>
+                        <option value="luxury">Luxury</option>
+                        <option value="romantic">Romantic</option>
+                        <option value="family">Family</option>
+                    </select>
+                    
+                    <select id="priceFilter" class="form-input" onchange="filterDestinations()">
+                        <option value="">Any Price</option>
+                        <option value="budget">Under $2,500</option>
+                        <option value="mid-range">$2,500 - $5,000</option>
+                        <option value="luxury">$5,000 - $7,500</option>
+                        <option value="premium">Over $7,500</option>
+                    </select>
+                    
+                    <select id="durationFilter" class="form-input" onchange="filterDestinations()">
+                        <option value="">Any Duration</option>
+                        <option value="short">1-7 Days</option>
+                        <option value="medium">8-14 Days</option>
+                        <option value="long">15+ Days</option>
+                    </select>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 justify-center mb-6">
+                    <button class="filter-btn active" data-filter="all">All Destinations</button>
+                    <button class="filter-btn" data-filter="adventure">
+                        <i class="fas fa-mountain"></i> Adventure
+                    </button>
+                    <button class="filter-btn" data-filter="beach">
+                        <i class="fas fa-umbrella-beach"></i> Beach
+                    </button>
+                    <button class="filter-btn" data-filter="cultural">
+                        <i class="fas fa-landmark"></i> Culture
+                    </button>
+                    <button class="filter-btn" data-filter="nature">
+                        <i class="fas fa-tree"></i> Nature
+                    </button>
+                    <button class="filter-btn" data-filter="luxury">
+                        <i class="fas fa-gem"></i> Luxury
+                    </button>
+                    <button class="filter-btn" data-filter="romantic">
+                        <i class="fas fa-heart"></i> Romantic
+                    </button>
+                    <button class="filter-btn" data-filter="family">
+                        <i class="fas fa-users"></i> Family
+                    </button>
+                </div>
+                
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div id="resultsCount" class="text-gray-400 font-medium text-lg">Loading destinations...</div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-400">Sort by:</span>
+                        <select id="sortFilter" class="form-input py-2 px-4" onchange="sortDestinations()">
+                            <option value="default">Recommended</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="popularity">Most Popular</option>
+                            <option value="duration">Shortest First</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Grid -->
+    <section class="py-8">
+        <div class="container mx-auto px-6">
+            <div id="destinationsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Destinations will be dynamically loaded here -->
+            </div>
+            
+            <div id="noResults" class="text-center py-20 hidden fade-in">
+                <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-r from-gray-800 to-gray-900 rounded-full flex items-center justify-center">
+                    <i class="fas fa-search text-5xl text-gray-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-white">No destinations found</h3>
+                <p class="text-gray-400 mb-6">Try adjusting your search or filter criteria</p>
+                <button class="btn-primary" onclick="resetFilters()">
+                    <i class="fas fa-redo mr-2"></i> Reset Filters
+                </button>
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <button class="btn-secondary py-4 px-8 text-lg" onclick="loadMoreDestinations()">
+                    <i class="fas fa-compass mr-3 animate-spin"></i> Explore More Destinations
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-gradient-to-b from-gray-900/50 to-transparent">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+                    Why Choose <span class="gradient-text">Another World</span>
+                </h2>
+                <p class="text-gray-400 text-xl max-w-3xl mx-auto">
+                    We provide more than just travel - we create lifelong memories
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-8 bg-gray-900/50 rounded-2xl border border-gray-700 hover:border-orange-500 transition-all duration-500 hover:scale-105 fade-in">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-3xl text-white">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Expert Curated</h3>
+                    <p class="text-gray-400">Each destination is personally selected by our travel experts with decades of experience.</p>
+                </div>
+                
+                <div class="text-center p-8 bg-gray-900/50 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all duration-500 hover:scale-105 fade-in">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-3xl text-white">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Premium Safety</h3>
+                    <p class="text-gray-400">Your safety is our priority with 24/7 support and comprehensive travel insurance.</p>
+                </div>
+                
+                <div class="text-center p-8 bg-gray-900/50 rounded-2xl border border-gray-700 hover:border-green-500 transition-all duration-500 hover:scale-105 fade-in">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-3xl text-white">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Exclusive Access</h3>
+                    <p class="text-gray-400">Special access to private locations and experiences not available to the general public.</p>
+                </div>
+                
+                <div class="text-center p-8 bg-gray-900/50 rounded-2xl border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:scale-105 fade-in">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-3xl text-white">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Personalized Service</h3>
+                    <p class="text-gray-400">Customize every aspect of your journey with our dedicated travel designers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Destination Details -->
+    <div class="modal-overlay" id="destinationModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-image" id="modalImage" style="height: 400px;"></div>
+            
+            <div class="p-8">
+                <div class="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-8">
+                    <div>
+                        <h2 id="modalTitle" class="text-3xl lg:text-4xl font-bold mb-3 text-white"></h2>
+                        <div class="flex items-center mb-5">
+                            <div class="flex text-yellow-400 mr-5 text-lg" id="modalRating"></div>
+                            <span id="modalReviews" class="text-gray-400 text-lg"></span>
+                        </div>
+                        <div class="flex flex-wrap gap-3 mb-4" id="modalTags"></div>
+                    </div>
+                    <div class="mt-6 lg:mt-0">
+                        <div class="price-tag text-2xl px-8 py-4" id="modalPrice"></div>
+                        <div class="text-gray-400 text-center mt-3 text-lg" id="modalDuration"></div>
+                    </div>
+                </div>
+                
+                <!-- Popularity Meter -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-gray-400 font-medium">Destination Popularity</span>
+                        <span class="text-white font-bold" id="popularityPercent">85%</span>
+                    </div>
+                    <div class="progress-bar" id="popularityBar" style="width: 85%"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Destination <span class="gradient-text">Overview</span></h3>
+                        <p id="modalDescription" class="text-gray-300 text-lg leading-relaxed mb-8"></p>
+                        
+                        <h3 class="text-2xl font-bold mb-6 text-white">Travel <span class="gradient-text">Highlights</span></h3>
+                        <div id="modalHighlights" class="mb-10"></div>
+                        
+                        <h3 class="text-2xl font-bold mb-6 text-white">Photo <span class="gradient-text">Gallery</span></h3>
+                        <div class="gallery-grid" id="modalGallery"></div>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-gray-900/50 rounded-2xl p-8 border border-gray-700 sticky top-8">
+                            <h3 class="text-2xl font-bold mb-6 text-white">Trip <span class="gradient-text">Details</span></h3>
+                            
+                            <div class="space-y-6 mb-8">
+                                <div>
+                                    <h4 class="font-semibold text-gray-400 mb-2 text-lg">Best Time to Visit</h4>
+                                    <p id="modalBestTime" class="text-white text-lg"></p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-semibold text-gray-400 mb-2 text-lg">Difficulty Level</h4>
+                                    <p id="modalDifficulty" class="text-white text-lg"></p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-semibold text-gray-400 mb-2 text-lg">Group Size</h4>
+                                    <p id="modalGroupSize" class="text-white text-lg"></p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-semibold text-gray-400 mb-2 text-lg">Accommodation Type</h4>
+                                    <p id="modalAccommodation" class="text-white text-lg"></p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-semibold text-gray-400 mb-3 text-lg">What's Included</h4>
+                                    <ul id="modalIncluded" class="text-white space-y-2"></ul>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-semibold text-gray-400 mb-3 text-lg">Not Included</h4>
+                                    <ul id="modalNotIncluded" class="text-white space-y-2"></ul>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <button class="btn-primary w-full py-4 text-lg">
+                                    <i class="fas fa-calendar-check mr-3"></i> Book This Destination
+                                </button>
+                                
+                                <button class="w-full py-4 border border-gray-600 text-white rounded-xl hover:bg-gray-800/50 transition-all duration-300 text-lg">
+                                    <i class="far fa-heart mr-3"></i> Add to Wishlist
+                                </button>
+                                
+                                <button class="w-full py-4 border border-gray-600 text-white rounded-xl hover:bg-gray-800/50 transition-all duration-300 text-lg">
+                                    <i class="fas fa-share-alt mr-3"></i> Share with Friends
+                                </button>
+                            </div>
+                            
+                            <div class="mt-8 pt-8 border-t border-gray-700">
+                                <h4 class="font-semibold text-gray-400 mb-3 text-lg">Need Help?</h4>
+                                <p class="text-gray-300 mb-4">Our travel experts are available 24/7 to assist you.</p>
+                                <button class="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl hover:opacity-90 transition-all duration-300">
+                                    <i class="fas fa-headset mr-3"></i> Chat with Expert
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Similar Destinations -->
+                <div class="mt-12 pt-12 border-t border-gray-800">
+                    <h3 class="text-2xl font-bold mb-8 text-center text-white">Similar <span class="gradient-text">Destinations</span></h3>
+                    <div id="similarDestinations" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Similar destinations will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-gray-900 to-gray-800 border-t border-gray-700 mt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 mr-4"></div>
+                        <div class="text-2xl font-bold">
+                            <span class="text-white">ANOTHER</span>
+                            <span class="gradient-text">WORLD</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-lg">Creating extraordinary travel experiences that exceed expectations.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">Home</a></li>
+                        <li><a href="destinations.html" class="text-orange-400 font-semibold text-lg hover:translate-x-2 transition-all duration-300 inline-block">Destinations</a></li>
+                        <li><a href="packages.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">Packages</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block text-lg">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Contact Information</h3>
+                    <ul class="space-y-4 text-gray-400 text-lg">
+                        <li class="flex items-center"><i class="fas fa-phone mr-4 text-orange-500"></i> +1 (555) 123-4567</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-4 text-orange-500"></i> info@anotherworld.com</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-4 text-orange-500"></i> New York, USA</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">Newsletter</h3>
+                    <p class="text-gray-400 mb-5 text-lg">Get exclusive destination updates and offers</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your Email" class="form-input rounded-r-none">
+                        <button class="btn-primary rounded-l-none px-6">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-500 text-lg">
+                <p>&copy; 2023 Another World Travel Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Destinations Data - محتوى إضافي
+        const destinations = [
+            {
+                id: 1,
+                title: "Northern Lights Expedition",
+                category: ["adventure", "nature", "luxury"],
+                price: 3899,
+                originalPrice: 4299,
+                duration: "8 Days / 7 Nights",
+                rating: 4.9,
+                reviews: 128,
+                popularity: 95,
+                description: "Experience the magical dance of aurora borealis in Iceland's remote wilderness. This 8-day luxury tour includes private guides, thermal baths, and stays in exclusive glass-roofed lodges where you can watch the celestial display from the comfort of your bed. Our expert guides will take you to the best viewing spots away from light pollution for optimal Northern Lights experience.",
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Private northern lights photography session with professional photographer",
+                    "Exclusive access to remote viewing locations via 4x4 vehicles",
+                    "Luxury thermal spa experience at Blue Lagoon with private access",
+                    "Gourmet Arctic dining under the stars at secluded locations",
+                    "Guided glacier hiking and ice cave exploration"
+                ],
+                tags: ["Northern Lights", "Iceland", "Winter Wonderland", "Photography", "Luxury"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1468581264429-2548ef9eb732?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "September to March (Peak: December - February)",
+                difficulty: "Moderate",
+                groupSize: "Maximum 8 travelers for personalized experience",
+                accommodation: "Luxury glass igloos & boutique wilderness lodges",
+                included: [
+                    "All accommodations in luxury properties",
+                    "Private expert guide throughout the journey",
+                    "All meals featuring local Icelandic cuisine",
+                    "Premium airport transfers and private transportation",
+                    "Professional photography equipment rental",
+                    "All thermal spa and activity entrance fees"
+                ],
+                notIncluded: [
+                    "International flights to/from Iceland",
+                    "Travel insurance (required)",
+                    "Personal expenses and souvenirs",
+                    "Optional additional activities"
+                ]
+            },
+            {
+                id: 2,
+                title: "Maldivian Paradise Escape",
+                category: ["beach", "luxury", "romantic"],
+                price: 4999,
+                originalPrice: 5499,
+                duration: "10 Days / 9 Nights",
+                rating: 4.8,
+                reviews: 215,
+                popularity: 92,
+                description: "Indulge in ultimate luxury at our private overwater villas in the Maldives. Experience pristine white-sand beaches, crystal-clear turquoise waters, and world-class diving in this tropical paradise. Each villa features a private infinity pool, glass floor for marine viewing, and direct access to the lagoon.",
+                image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Private overwater villa with infinity pool and glass floor",
+                    "Personal butler service available 24/7",
+                    "Sunset dolphin cruise with champagne",
+                    "Underwater restaurant dining experience",
+                    "Private snorkeling and diving excursions"
+                ],
+                tags: ["Tropical", "Maldives", "Overwater Villa", "Honeymoon", "All-Inclusive"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1516496636080-14fb876e029d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1573843989-c9d7ad0f8e4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "November to April (Dry season)",
+                difficulty: "Easy",
+                groupSize: "Private experience or couples",
+                accommodation: "Luxury overwater villas with private pools",
+                included: [
+                    "Overwater villa accommodation",
+                    "All-inclusive gourmet dining",
+                    "Unlimited water sports and activities",
+                    "Seaplane airport transfers",
+                    "$500 spa credit per person",
+                    "Private sunset cruise"
+                ],
+                notIncluded: [
+                    "International flights",
+                    "Premium alcoholic beverages",
+                    "Optional private excursions",
+                    "Spa treatments beyond credit"
+                ]
+            },
+            {
+                id: 3,
+                title: "Japanese Cultural Journey",
+                category: ["cultural", "luxury", "nature"],
+                price: 4299,
+                originalPrice: 4699,
+                duration: "12 Days / 11 Nights",
+                rating: 4.9,
+                reviews: 156,
+                popularity: 88,
+                description: "Immerse yourself in the beauty and tradition of Japan with this comprehensive cultural journey. From the neon-lit streets of Tokyo to the serene temples of Kyoto, experience authentic Japanese hospitality, ancient traditions, and modern luxury in perfect harmony.",
+                image: "https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Traditional kaiseki dining with Geisha entertainment in Kyoto",
+                    "Private meditation session with Zen Buddhist monks",
+                    "First-class bullet train travel between cities",
+                    "Onsen hot spring retreat in Hakone with mountain views",
+                    "Private tour of Tokyo's hidden neighborhoods"
+                ],
+                tags: ["Japan", "Culture", "Traditional", "Wellness", "Modern Luxury"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "March-May (Cherry Blossom) & September-November (Fall Colors)",
+                difficulty: "Moderate",
+                groupSize: "Maximum 10 travelers",
+                accommodation: "Traditional ryokans & luxury city hotels",
+                included: [
+                    "All accommodations in premium properties",
+                    "Most meals featuring Japanese cuisine",
+                    "Japan Rail Pass for unlimited train travel",
+                    "All cultural experiences and entrance fees",
+                    "Private English-speaking guide",
+                    "Airport transfers and local transportation"
+                ],
+                notIncluded: [
+                    "International flights",
+                    "Some meals as specified in itinerary",
+                    "Personal shopping and souvenirs",
+                    "Optional additional activities"
+                ]
+            },
+            {
+                id: 4,
+                title: "Swiss Alpine Majesty",
+                category: ["adventure", "nature", "luxury"],
+                price: 4599,
+                originalPrice: 4999,
+                duration: "9 Days / 8 Nights",
+                rating: 4.7,
+                reviews: 189,
+                popularity: 85,
+                description: "Experience the breathtaking beauty of the Swiss Alps with our luxury mountain adventure. From the iconic Matterhorn to the pristine lakes of Interlaken, this journey combines outdoor adventure with Swiss precision and luxury.",
+                image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Private helicopter tour over the Matterhorn and surrounding peaks",
+                    "Gourmet dining at mountain-top restaurants accessible by cable car",
+                    "Luxury spa retreat with panoramic alpine views",
+                    "Guided glacier hiking with certified mountain guides",
+                    "Scenic train journey on the Glacier Express"
+                ],
+                tags: ["Switzerland", "Alps", "Mountains", "Adventure", "Skiing"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "Year-round (Skiing: Dec-Mar, Hiking: Jun-Sep)",
+                difficulty: "Moderate to Challenging",
+                groupSize: "Maximum 8 travelers",
+                accommodation: "Luxury alpine chalets and 5-star mountain hotels",
+                included: [
+                    "Premium chalet and hotel accommodation",
+                    "All meals featuring Swiss and international cuisine",
+                    "Ski passes and equipment rental (winter)",
+                    "Private helicopter tour (weather permitting)",
+                    "All guided activities and excursions",
+                    "Mountain transportation passes"
+                ],
+                notIncluded: [
+                    "International flights",
+                    "Travel insurance",
+                    "Optional private lessons",
+                    "Personal alpine equipment"
+                ]
+            },
+            {
+                id: 5,
+                title: "Santorini Sunset Experience",
+                category: ["romantic", "beach", "cultural"],
+                price: 3299,
+                originalPrice: 3699,
+                duration: "7 Days / 6 Nights",
+                rating: 4.8,
+                reviews: 234,
+                popularity: 90,
+                description: "Experience the magic of Greek islands with our luxury Santorini escape. Stay in exclusive cliffside suites with caldera views, enjoy private yacht tours to volcanic hot springs, and witness the world's most beautiful sunsets from Oia's famous vantage points.",
+                image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Private caldera cruise at sunset with Greek meze and wine",
+                    "Wine tasting and vineyard tour at Santorini's best wineries",
+                    "Private cooking class with a local chef in traditional village",
+                    "Professional photoshoot at iconic blue-domed churches",
+                    "Exclusive access to private beaches"
+                ],
+                tags: ["Greece", "Islands", "Romantic", "Food & Wine", "Sunsets"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1502741338009-cacb7d0372f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1573843989-c9d7ad0f8e4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "April to October (Peak: June-September)",
+                difficulty: "Easy",
+                groupSize: "Private or small groups up to 12",
+                accommodation: "Luxury cave suites with private terraces and plunge pools",
+                included: [
+                    "Luxury cave suite accommodation",
+                    "Daily breakfast and selected dinners",
+                    "Private transfers and airport shuttle",
+                    "Sunset caldera cruise with dinner",
+                    "Wine tasting tour",
+                    "Professional photoshoot session"
+                ],
+                notIncluded: [
+                    "International flights",
+                    "Most lunches and some dinners",
+                    "Optional private excursions",
+                    "Spa treatments and personal expenses"
+                ]
+            },
+            {
+                id: 6,
+                title: "African Safari Adventure",
+                category: ["adventure", "nature", "luxury"],
+                price: 5699,
+                originalPrice: 6199,
+                duration: "14 Days / 13 Nights",
+                rating: 4.9,
+                reviews: 167,
+                popularity: 87,
+                description: "Embark on the ultimate African safari across Kenya and Tanzania. Witness the great wildebeest migration, encounter the Big Five in their natural habitat, and experience luxury tented camps under the African stars. This journey combines thrilling wildlife encounters with unparalleled comfort.",
+                image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Private game drives with expert safari guides in custom vehicles",
+                    "Luxury tented camps in prime wildlife viewing locations",
+                    "Hot air balloon safari over the Serengeti at sunrise",
+                    "Cultural visits to authentic Maasai villages",
+                    "Night game drives to witness nocturnal wildlife"
+                ],
+                tags: ["Africa", "Safari", "Wildlife", "Adventure", "Luxury Tents"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1550358864-518f202c02ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1523805009345-7448845a9e53?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "June to October (Great Migration period)",
+                difficulty: "Moderate",
+                groupSize: "Maximum 6 travelers per vehicle",
+                accommodation: "Luxury safari lodges and tented camps",
+                included: [
+                    "All accommodations in premium safari properties",
+                    "All meals, drinks, and snacks on safari",
+                    "Private game drives in custom safari vehicles",
+                    "All national park and conservation fees",
+                    "Expert safari guides and trackers",
+                    "Internal flights between safari camps"
+                ],
+                notIncluded: [
+                    "International flights",
+                    "Visa fees for Kenya/Tanzania",
+                    "Travel insurance",
+                    "Tips for guides and camp staff"
+                ]
+            },
+            {
+                id: 7,
+                title: "Italian Food & Wine Odyssey",
+                category: ["cultural", "luxury", "food"],
+                price: 3999,
+                originalPrice: 4499,
+                duration: "10 Days / 9 Nights",
+                rating: 4.8,
+                reviews: 142,
+                popularity: 84,
+                description: "Indulge in Italy's culinary delights from Tuscany to the Amalfi Coast. This gastronomic journey features private cooking classes, exclusive vineyard tours, and Michelin-starred dining experiences, all set against Italy's most beautiful landscapes.",
+                image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Private truffle hunting experience in Tuscan forests",
+                    "Wine tasting at exclusive vineyards with owner meet-and-greets",
+                    "Pasta making class with a local 'nonna' in her farmhouse",
+                    "Private boat tour along the stunning Amalfi Coast",
+                    "Michelin-starred dining experiences in Florence and Rome"
+                ],
+                tags: ["Italy", "Food", "Wine", "Culture", "Gourmet"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1579042864876-6d2e3a6003ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "April to June & September to October",
+                difficulty: "Easy",
+                groupSize: "Maximum 10 travelers",
+                accommodation: "Boutique hotels, agriturismos, and luxury villas",
+                included: [
+                    "All accommodations in premium properties",
+                    "Most meals featuring regional Italian cuisine",
+                    "All cooking classes and food experiences",
+                    "Wine tastings and vineyard tours",
+                    "Private transportation between destinations",
+                    "Expert food and wine guide"
+                ],
+                notIncluded: [
+                    "International flights",
+                    "Some meals as specified in itinerary",
+                    "Optional additional activities",
+                    "Personal shopping and souvenirs"
+                ]
+            },
+            {
+                id: 8,
+                title: "Thai Island Discovery",
+                category: ["beach", "adventure", "cultural"],
+                price: 2799,
+                originalPrice: 3199,
+                duration: "11 Days / 10 Nights",
+                rating: 4.7,
+                reviews: 198,
+                popularity: 82,
+                description: "Discover Thailand's most beautiful islands from Phuket to Koh Phi Phi. This tropical adventure combines luxury beach resorts, snorkeling in crystal-clear waters, and authentic Thai cultural experiences for the perfect island getaway.",
+                image: "https://images.unsplash.com/photo-1552465011-b4e30bf7349d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Private longtail boat island hopping tour to hidden beaches",
+                    "Luxury resort stay with private pool overlooking the Andaman Sea",
+                    "Authentic Thai cooking class on a tropical beach",
+                    "Snorkeling and diving in marine national parks",
+                    "Traditional Thai massage and wellness experiences"
+                ],
+                tags: ["Thailand", "Islands", "Beach", "Adventure", "Wellness"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1552465011-b4e30bf7349d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1516496636080-14fb876e029d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1534008897995-27a23e859048?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "November to April (Dry season)",
+                difficulty: "Easy",
+                groupSize: "Private or small groups up to 12",
+                accommodation: "Luxury beach resorts and boutique hotels",
+                included: [
+                    "Premium resort accommodation",
+                    "Daily breakfast and selected dinners",
+                    "All boat tours and island hopping",
+                    "Snorkeling equipment and guided tours",
+                    "Cultural activities and cooking class",
+                    "Airport transfers and local transportation"
+                ],
+                notIncluded: [
+                    "International flights",
+                    "Most lunches and some dinners",
+                    "Optional diving certifications",
+                    "Spa treatments and personal expenses"
+                ]
+            },
+            {
+                id: 9,
+                title: "Patagonian Wilderness Trek",
+                category: ["adventure", "nature", "luxury"],
+                price: 5199,
+                originalPrice: 5699,
+                duration: "15 Days / 14 Nights",
+                rating: 4.9,
+                reviews: 89,
+                popularity: 79,
+                description: "Challenge yourself with this epic Patagonian adventure through some of the world's most spectacular landscapes. Trek through Torres del Paine National Park, witness glaciers calving into turquoise lakes, and stay in exclusive eco-lodges with breathtaking mountain views.",
+                image: "https://images.unsplash.com/photo-1526392587636-9a0e8a0e5c6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                highlights: [
+                    "Guided W Trek through Torres del Paine's iconic landscapes",
+                    "Boat tour to see Grey Glacier calving into the lake",
+                    "Stay in luxury eco-lodges with panoramic mountain views",
+                    "Horseback riding through the Andes with gaucho guides",
+                    "Stargazing in one of the world's clearest night skies"
+                ],
+                tags: ["Patagonia", "Hiking", "Mountains", "Adventure", "Wilderness"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1526392587636-9a0e8a0e5c6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                bestTime: "October to March (Patagonian summer)",
+                difficulty: "Challenging",
+                groupSize: "Maximum 8 travelers",
+                accommodation: "Eco-lodges, mountain refuges, and boutique hotels",
+                included: [
+                    "All accommodations in premium properties",
+                    "All meals during trekking days",
+                    "Expert mountain guides and porters",
+                    "All trekking equipment rental",
+                    "National park and activity entrance fees",
+                    "Internal flights within Patagonia"
+                ],
+                notIncluded: [
+                    "International flights to South America",
+                    "Travel insurance (required for trekking)",
+                    "Personal trekking gear",
+                    "Optional pre/post trip extensions"
+                ]
+            }
+        ];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load destinations
+            loadDestinations(destinations);
+            
+            // Setup filter buttons
+            setupFilterButtons();
+            
+            // Setup counters animation
+            setupCounters();
+            
+            // Setup custom cursor
+            setupCustomCursor();
+            
+            // Mobile menu toggle
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+            
+            // Modal close button
+            const closeModal = document.getElementById('closeModal');
+            const modal = document.getElementById('destinationModal');
+            
+            if (closeModal && modal) {
+                closeModal.addEventListener('click', function() {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+                
+                // Close modal when clicking outside
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('destinationModal');
+                    if (modal.classList.contains('active')) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+            
+            // Add hover effects to interactive elements
+            document.querySelectorAll('.destination-card, .filter-btn, .highlight-item, .gallery-item').forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                el.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // Function to load destinations into the grid
+        function loadDestinations(dests) {
+            const grid = document.getElementById('destinationsGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            if (dests.length === 0) {
+                noResults.classList.remove('hidden');
+                updateResultsCount(0);
+                return;
+            }
+            
+            noResults.classList.add('hidden');
+            updateResultsCount(dests.length);
+            
+            dests.forEach((destination, index) => {
+                const card = document.createElement('div');
+                card.className = 'destination-card fade-in';
+                card.dataset.id = destination.id;
+                card.dataset.category = destination.category.join(' ');
+                card.style.animationDelay = `${index * 0.15}s`;
+                
+                card.innerHTML = `
+                    <div class="card-image" style="background-image: url('${destination.image}')">
+                        <div class="card-overlay">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold text-white">${destination.title}</h3>
+                                <div class="price-tag">$${destination.price}</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex text-yellow-400 mr-3">
+                                    ${getStarRating(destination.rating)}
+                                </div>
+                                <span class="font-bold text-white">${destination.rating}</span>
+                                <span class="text-gray-400 ml-3">(${destination.reviews} reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            ${destination.tags.map(tag => `<span class="px-3 py-1 bg-gray-800/70 rounded-full text-sm font-medium">${tag}</span>`).join('')}
+                        </div>
+                        <p class="text-gray-300 mb-6">${destination.description.substring(0, 140)}...</p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-400 font-medium">
+                                <i class="far fa-calendar-alt mr-2"></i> ${destination.duration}
+                            </div>
+                            <button class="btn-primary px-5 py-2 text-sm view-details-btn" data-id="${destination.id}">
+                                Explore <i class="ml-2 fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+            
+            // Add event listeners to view details buttons
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = parseInt(this.dataset.id);
+                    showDestinationDetails(id);
+                });
+            });
+            
+            // Add event listener to entire card
+            document.querySelectorAll('.destination-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.view-details-btn')) {
+                        const id = parseInt(this.dataset.id);
+                        showDestinationDetails(id);
+                    }
+                });
+            });
+        }
+
+        // Function to show destination details in modal
+        function showDestinationDetails(id) {
+            const destination = destinations.find(d => d.id === id);
+            if (!destination) return;
+            
+            const modal = document.getElementById('destinationModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalRating = document.getElementById('modalRating');
+            const modalReviews = document.getElementById('modalReviews');
+            const modalTags = document.getElementById('modalTags');
+            const modalPrice = document.getElementById('modalPrice');
+            const modalDuration = document.getElementById('modalDuration');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalHighlights = document.getElementById('modalHighlights');
+            const modalGallery = document.getElementById('modalGallery');
+            const modalBestTime = document.getElementById('modalBestTime');
+            const modalDifficulty = document.getElementById('modalDifficulty');
+            const modalGroupSize = document.getElementById('modalGroupSize');
+            const modalAccommodation = document.getElementById('modalAccommodation');
+            const modalIncluded = document.getElementById('modalIncluded');
+            const modalNotIncluded = document.getElementById('modalNotIncluded');
+            const popularityBar = document.getElementById('popularityBar');
+            const popularityPercent = document.getElementById('popularityPercent');
+            
+            // Populate modal with destination data
+            modalImage.style.backgroundImage = `url('${destination.image}')`;
+            modalTitle.textContent = destination.title;
+            modalRating.innerHTML = getStarRating(destination.rating);
+            modalReviews.textContent = `(${destination.reviews} traveler reviews)`;
+            modalPrice.textContent = `$${destination.price}`;
+            if (destination.originalPrice > destination.price) {
+                modalPrice.innerHTML += ` <span class="text-gray-400 line-through text-xl">$${destination.originalPrice}</span>`;
+            }
+            modalDuration.textContent = destination.duration;
+            modalDescription.textContent = destination.description;
+            modalBestTime.textContent = destination.bestTime;
+            modalDifficulty.textContent = destination.difficulty;
+            modalGroupSize.textContent = destination.groupSize;
+            modalAccommodation.textContent = destination.accommodation;
+            
+            // Update popularity
+            popularityBar.style.width = `${destination.popularity}%`;
+            popularityPercent.textContent = `${destination.popularity}%`;
+            
+            // Populate tags
+            modalTags.innerHTML = destination.tags.map(tag => 
+                `<span class="px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-900 rounded-full text-sm font-semibold">${tag}</span>`
+            ).join('');
+            
+            // Populate highlights
+            modalHighlights.innerHTML = destination.highlights.map((highlight, index) => `
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Highlight ${index + 1}</h4>
+                        <p class="text-gray-300">${highlight}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Populate gallery
+            modalGallery.innerHTML = destination.gallery.map((img, index) => `
+                <div class="gallery-item" style="background-image: url('${img}')" onclick="changeMainImage('${img}')">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Populate included items
+            modalIncluded.innerHTML = destination.included.map(item => 
+                `<li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> ${item}</li>`
+            ).join('');
+            
+            // Populate not included items
+            modalNotIncluded.innerHTML = destination.notIncluded.map(item => 
+                `<li class="flex items-center"><i class="fas fa-times text-red-500 mr-3"></i> ${item}</li>`
+            ).join('');
+            
+            // Load similar destinations
+            loadSimilarDestinations(destination);
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Add animation to modal elements
+            setTimeout(() => {
+                document.querySelectorAll('.highlight-item, .gallery-item').forEach((el, index) => {
+                    el.style.animationDelay = `${index * 0.1}s`;
+                    el.classList.add('fade-in');
+                });
+            }, 300);
+        }
+
+        // Function to change main image in modal
+        window.changeMainImage = function(imgUrl) {
+            const modalImage = document.getElementById('modalImage');
+            modalImage.style.backgroundImage = `url('${imgUrl}')`;
+            
+            // Add zoom animation
+            modalImage.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                modalImage.style.transform = 'scale(1)';
+            }, 300);
+        };
+
+        // Function to load similar destinations
+        function loadSimilarDestinations(currentDest) {
+            const similarContainer = document.getElementById('similarDestinations');
+            const currentCategories = currentDest.category;
+            
+            // Find destinations with at least one matching category
+            const similar = destinations
+                .filter(dest => dest.id !== currentDest.id && 
+                       dest.category.some(cat => currentCategories.includes(cat)))
+                .slice(0, 3);
+            
+            similarContainer.innerHTML = similar.map(dest => `
+                <div class="bg-gray-900/50 rounded-2xl p-6 border border-gray-700 hover:border-orange-500 transition-all duration-300 cursor-pointer" onclick="showDestinationDetails(${dest.id})">
+                    <div class="h-40 rounded-xl mb-4 bg-cover bg-center" style="background-image: url('${dest.image}')"></div>
+                    <h4 class="font-bold mb-2 text-white">${dest.title}</h4>
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="text-orange-400 font-bold text-lg">$${dest.price}</div>
+                        <div class="text-gray-400 text-sm">${dest.duration}</div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${dest.tags.slice(0, 2).map(tag => `<span class="px-2 py-1 bg-gray-800 rounded-full text-xs">${tag}</span>`).join('')}
+                    </div>
+                    <button class="btn-primary w-full text-sm py-2">
+                        <i class="fas fa-eye mr-2"></i> View Details
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Function to setup filter buttons
+        function setupFilterButtons() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter destinations
+                    filterDestinations();
+                });
+            });
+        }
+
+        // Function to filter destinations
+        function filterDestinations() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const priceFilter = document.getElementById('priceFilter').value;
+            const durationFilter = document.getElementById('durationFilter').value;
+            const activeFilterBtn = document.querySelector('.filter-btn.active');
+            const filterValue = activeFilterBtn ? activeFilterBtn.dataset.filter : 'all';
+            
+            let filtered = destinations;
+            
+            // Text search
+            if (searchInput) {
+                filtered = filtered.filter(dest => 
+                    dest.title.toLowerCase().includes(searchInput) ||
+                    dest.description.toLowerCase().includes(searchInput) ||
+                    dest.tags.some(tag => tag.toLowerCase().includes(searchInput))
+                );
+            }
+            
+            // Category filter
+            if (categoryFilter) {
+                filtered = filtered.filter(dest => dest.category.includes(categoryFilter));
+            }
+            
+            // Price filter
+            if (priceFilter) {
+                filtered = filtered.filter(dest => {
+                    switch(priceFilter) {
+                        case 'budget': return dest.price < 2500;
+                        case 'mid-range': return dest.price >= 2500 && dest.price <= 5000;
+                        case 'luxury': return dest.price > 5000 && dest.price <= 7500;
+                        case 'premium': return dest.price > 7500;
+                        default: return true;
+                    }
+                });
+            }
+            
+            // Duration filter
+            if (durationFilter) {
+                filtered = filtered.filter(dest => {
+                    const days = parseInt(dest.duration);
+                    switch(durationFilter) {
+                        case 'short': return days <= 7;
+                        case 'medium': return days >= 8 && days <= 14;
+                        case 'long': return days >= 15;
+                        default: return true;
+                    }
+                });
+            }
+            
+            // Button filter
+            if (filterValue !== 'all') {
+                filtered = filtered.filter(dest => dest.category.includes(filterValue));
+            }
+            
+            loadDestinations(filtered);
+        }
+
+        // Function to sort destinations
+        function sortDestinations() {
+            const sortValue = document.getElementById('sortFilter').value;
+            let filtered = [...destinations];
+            
+            switch(sortValue) {
+                case 'price-low':
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+                case 'rating':
+                    filtered.sort((a, b) => b.rating - a.rating);
+                    break;
+                case 'popularity':
+                    filtered.sort((a, b) => b.popularity - a.popularity);
+                    break;
+                case 'duration':
+                    filtered.sort((a, b) => {
+                        const daysA = parseInt(a.duration);
+                        const daysB = parseInt(b.duration);
+                        return daysA - daysB;
+                    });
+                    break;
+            }
+            
+            loadDestinations(filtered);
+        }
+
+        // Function to reset all filters
+        window.resetFilters = function() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('priceFilter').value = '';
+            document.getElementById('durationFilter').value = '';
+            document.getElementById('sortFilter').value = 'default';
+            
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+            
+            loadDestinations(destinations);
+        };
+
+        // Function to load more destinations (simulated)
+        window.loadMoreDestinations = function() {
+            const loadBtn = document.querySelector('.btn-secondary');
+            const originalText = loadBtn.innerHTML;
+            
+            loadBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i> Loading...';
+            loadBtn.disabled = true;
+            
+            // Simulate loading
+            setTimeout(() => {
+                // In a real application, this would load more data from an API
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-4 right-4 bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-xl shadow-2xl fade-in';
+                toast.innerHTML = '<i class="fas fa-check-circle mr-2"></i> More destinations loaded successfully!';
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+                
+                loadBtn.innerHTML = originalText;
+                loadBtn.disabled = false;
+            }, 1500);
+        };
+
+        // Function to update results count
+        function updateResultsCount(count) {
+            const resultsCount = document.getElementById('resultsCount');
+            if (resultsCount) {
+                resultsCount.textContent = `Showing ${count} destination${count !== 1 ? 's' : ''}`;
+            }
+        }
+
+        // Function to setup counters animation
+        function setupCounters() {
+            const counters = document.querySelectorAll('.stat-counter');
+            counters.forEach((counter, index) => {
+                const target = index === 0 ? destinations.length : 
+                             index === 1 ? 30 : 
+                             index === 2 ? 8500 : 97;
+                
+                let current = 0;
+                const increment = target / 40;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current) + (index === 2 ? '+' : '');
+                }, 30);
+            });
+        }
+
+        // Function to setup custom cursor
+        function setupCustomCursor() {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            
+            window.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top = `${e.clientY}px`;
+                
+                cursorOutline.animate({
+                    left: `${e.clientX}px`,
+                    top: `${e.clientY}px`
+                }, { duration: 500, fill: 'forwards' });
+            });
+            
+            // Add hover effects
+            document.querySelectorAll('.destination-card, .btn-primary, .filter-btn, .highlight-item').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorDot.style.transform = 'scale(2.5)';
+                    cursorOutline.style.transform = 'scale(1.3)';
+                    cursorOutline.style.borderColor = 'var(--primary)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursorDot.style.transform = 'scale(1)';
+                    cursorOutline.style.transform = 'scale(1)';
+                    cursorOutline.style.borderColor = 'var(--primary)';
+                });
+            });
+        }
+
+        // Function to generate star rating HTML
+        function getStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+    </script>
+</body>
+</html>

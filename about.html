@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Another World Luxury Travel Agency</title>
+    <meta name="description" content="Learn about Another World - our story, values, team, and commitment to creating exceptional luxury travel experiences since 2010">
+    <meta name="keywords" content="about us, travel agency history, our team, company values, awards, sustainability">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #00A8E8;
+            --accent: #FFD166;
+            --dark: #0A2463;
+            --light: #F8F9FA;
+            --success: #06D6A0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0A2463 0%, #1E3A8A 50%, #3B82F6 100%);
+            color: white;
+            overflow-x: hidden;
+            font-size: 14px;
+        }
+        
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Navigation */
+        .nav-glass {
+            background: rgba(10, 36, 99, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            height: 70px;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 13px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-weight: 500;
+            padding: 12px 28px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        .hero-about {
+            min-height: 80vh;
+            background: linear-gradient(rgba(10, 36, 99, 0.92), rgba(10, 36, 99, 0.98)),
+                        url('https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2080&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Cards Design - مطابق لصفحة Packages */
+        .stat-card, .value-card, .team-card, .award-card, .timeline-content {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-card:hover, .value-card:hover, .team-card:hover, .award-card:hover, .timeline-content:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            padding: 6px 35px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 11px;
+            z-index: 10;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: -80px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Timeline */
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-year {
+            flex: 0 0 150px;
+            text-align: right;
+            padding-top: 10px;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 30px;
+            margin-left: 30px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            left: 145px;
+            top: 20px;
+            border: 4px solid var(--dark);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .team-card:hover {
+            border-color: var(--primary);
+        }
+        
+        .team-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        /* Features List - أصغر حجماً */
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        
+        .feature-item:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateX(5px);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+        
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+        
+        .value-card:hover {
+            border-color: var(--primary);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            transition: all 0.4s ease;
+        }
+        
+        .value-card:hover .value-icon {
+            background: rgba(255, 107, 53, 0.2);
+            transform: rotateY(180deg);
+        }
+        
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .award-card {
+            padding: 30px 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .award-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: var(--primary);
+        }
+        
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .cert-logo {
+            height: 80px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .cert-logo:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        /* Sustainability */
+        .sustainability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .sustain-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(6, 214, 160, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .sustain-card:hover {
+            border-color: var(--success);
+            transform: translateY(-10px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 60px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        /* Contact Info */
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .contact-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-card:hover {
+            border: 1px solid var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-year {
+                text-align: left;
+                margin-bottom: 10px;
+                flex: 0 0 auto;
+            }
+            
+            .timeline-content {
+                margin-left: 0;
+            }
+            
+            .timeline-dot {
+                display: none;
+            }
+            
+            .hero-about {
+                min-height: 60vh;
+            }
+            
+            .stats-grid {
+                margin-top: -50px;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 36, 99, 0.8);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+            border: 2px solid rgba(10, 36, 99, 0.8);
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            padding: 40px 30px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .client-quote {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .client-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        
+        /* Mission Vision */
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .mission-card, .vision-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Company Culture */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .culture-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .culture-card:hover {
+            border: 1px solid var(--primary);
+            transform: translateY(-10px);
+        }
+        
+        /* Office Map */
+        .office-locations {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Quality Assurance */
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .quality-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.8), rgba(10, 36, 99, 0.9));
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .quality-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        /* Fade-in Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Font Sizes - تصغير حجم الخط */
+        h1 { font-size: 2.5rem !important; }
+        h2 { font-size: 2rem !important; }
+        h3 { font-size: 1.5rem !important; }
+        h4 { font-size: 1.2rem !important; }
+        p, span, div, a { font-size: 14px !important; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-glass">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center">
+                        <i class="fas fa-globe-americas text-lg text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold">
+                            <span class="text-white">ANOTHER</span>
+                            <span class="gradient-text">WORLD</span>
+                        </h1>
+                    </div>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-all duration-300 hover-lift text-sm font-medium">Home</a>
+                    <a href="destinations.html" class="text-gray-300 hover:text-white transition-all duration-300 hover-lift text-sm font-medium">Destinations</a>
+                    <a href="packages.html" class="text-gray-300 hover:text-white transition-all duration-300 hover-lift text-sm font-medium">Packages</a>
+                    <a href="about.html" class="text-white font-semibold bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-sm hover-lift">About Us</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition-all duration-300 hover-lift text-sm font-medium">Contact</a>
+                    <a href="tel:+97141234567" class="btn-primary text-sm">
+                        <i class="fas fa-phone"></i> +971 4 123 4567
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-xl text-white focus:outline-none" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="lg:hidden mt-4 hidden bg-gray-900 rounded-xl p-4 shadow-xl" id="mobileMenu">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-gray-300 hover:text-white py-2 px-3 rounded-lg hover:bg-gray-800 transition-all duration-300 text-sm">Home</a>
+                    <a href="destinations.html" class="text-gray-300 hover:text-white py-2 px-3 rounded-lg hover:bg-gray-800 transition-all duration-300 text-sm">Destinations</a>
+                    <a href="packages.html" class="text-gray-300 hover:text-white py-2 px-3 rounded-lg hover:bg-gray-800 transition-all duration-300 text-sm">Packages</a>
+                    <a href="about.html" class="bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-semibold py-2 px-3 rounded-lg text-sm">About Us</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white py-2 px-3 rounded-lg hover:bg-gray-800 transition-all duration-300 text-sm">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-about pt-28 pb-16 flex items-center">
+        <div class="container mx-auto px-4">
+            <div class="hero-content fade-in">
+                <div class="mb-10">
+                    <div class="inline-block px-4 py-2 bg-orange-500/20 text-orange-500 rounded-full text-sm font-semibold mb-6 border border-orange-500/30">
+                        <i class="fas fa-certificate mr-2"></i> Trusted Since 2010
+                    </div>
+                    <h1 class="font-bold mb-6 leading-tight">
+                        <span class="text-white">Our Story of</span> 
+                        <span class="gradient-text">Excellence in Travel</span>
+                    </h1>
+                    <p class="text-lg text-gray-300 mb-8 max-w-3xl leading-relaxed">
+                        For over a decade, Another World has been redefining luxury travel through exceptional service, expert craftsmanship, and unwavering commitment to creating unforgettable experiences.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <button class="btn-primary">
+                            <i class="fas fa-play-circle mr-2"></i> Watch Our Journey
+                        </button>
+                        <a href="#contact" class="btn-secondary">
+                            <i class="fas fa-download mr-2"></i> Company Profile
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card animate-on-scroll hover-lift">
+                        <div class="stat-number" id="counter1">13+</div>
+                        <h3 class="text-lg font-semibold mb-2">Years Experience</h3>
+                        <p class="text-gray-400 text-sm">In luxury travel industry</p>
+                    </div>
+                    
+                    <div class="stat-card animate-on-scroll hover-lift">
+                        <div class="stat-number" id="counter2">50k+</div>
+                        <h3 class="text-lg font-semibold mb-2">Happy Travelers</h3>
+                        <p class="text-gray-400 text-sm">Clients worldwide</p>
+                    </div>
+                    
+                    <div class="stat-card animate-on-scroll hover-lift">
+                        <div class="stat-number" id="counter3">98%</div>
+                        <h3 class="text-lg font-semibold mb-2">Satisfaction</h3>
+                        <p class="text-gray-400 text-sm">Client recommendation rate</p>
+                    </div>
+                    
+                    <div class="stat-card animate-on-scroll hover-lift">
+                        <div class="stat-number" id="counter4">75+</div>
+                        <h3 class="text-lg font-semibold mb-2">Destinations</h3>
+                        <p class="text-gray-400 text-sm">Across 30 countries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                    Our <span class="gradient-text">Mission & Vision</span>
+                </h2>
+                
+                <div class="mission-vision-grid">
+                    <div class="mission-card animate-on-scroll hover-lift">
+                        <div class="value-icon mb-6" style="background: rgba(255, 107, 53, 0.1); color: #FF6B35;">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            To transform ordinary travel into extraordinary journeys by providing personalized, luxury experiences that exceed expectations and create lifelong memories.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Deliver exceptional service and attention to detail</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Provide expert guidance and insider access</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Ensure safety, reliability, and peace of mind</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vision-card animate-on-scroll hover-lift">
+                        <div class="value-icon mb-6" style="background: rgba(0, 168, 232, 0.1); color: #00A8E8;">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Our Vision</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            To be the world's most trusted and innovative luxury travel agency, setting new standards for excellence and sustainable tourism practices.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Expand to 100+ premium destinations worldwide</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Achieve 99% client satisfaction rating</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Lead the industry in sustainable travel innovation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Timeline -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Our <span class="gradient-text">Journey</span>
+            </h2>
+            
+            <div class="timeline-container">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">
+                        <div class="text-3xl font-bold gradient-text">2010</div>
+                        <div class="text-gray-400 text-sm">Founding Year</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content hover-lift">
+                        <h3 class="text-xl font-bold mb-3">Humble Beginnings</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Founded by Sarah Ahmed in Dubai with a vision to revolutionize luxury travel. Started with personalized service for corporate clients and high-net-worth individuals.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-500 text-xs rounded-full">Dubai HQ</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-500 text-xs rounded-full">Corporate Focus</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">
+                        <div class="text-3xl font-bold gradient-text">2013</div>
+                        <div class="text-gray-400 text-sm">Expansion Phase</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content hover-lift">
+                        <h3 class="text-xl font-bold mb-3">First International Recognition</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Received the "Best Luxury Travel Agency in the Middle East" award. Opened our first international office in London and expanded services to leisure travelers.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-500 text-xs rounded-full">Award Winner</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-500 text-xs rounded-full">Global Expansion</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">
+                        <div class="text-3xl font-bold gradient-text">2016</div>
+                        <div class="text-gray-400 text-sm">Digital Transformation</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content hover-lift">
+                        <h3 class="text-xl font-bold mb-3">Technology Innovation</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Launched our proprietary travel planning platform. Introduced virtual reality destination previews and AI-powered itinerary optimization for clients.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-500/20 text-green-500 text-xs rounded-full">Innovation</span>
+                            <span class="px-3 py-1 bg-teal-500/20 text-teal-500 text-xs rounded-full">Technology</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">
+                        <div class="text-3xl font-bold gradient-text">2019</div>
+                        <div class="text-gray-400 text-sm">Sustainability Commitment</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content hover-lift">
+                        <h3 class="text-xl font-bold mb-3">Eco-Travel Initiative</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Launched our sustainable tourism program. Partnered with eco-friendly resorts and local communities to promote responsible travel practices.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-500 text-xs rounded-full">Sustainability</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-500 text-xs rounded-full">Eco-Travel</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">
+                        <div class="text-3xl font-bold gradient-text">2023</div>
+                        <div class="text-gray-400 text-sm">Present Day</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content hover-lift">
+                        <h3 class="text-xl font-bold mb-3">Industry Leadership</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Now serving 50,000+ clients worldwide with offices in 8 countries. Recognized as a leader in luxury travel innovation and sustainable tourism.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-500 text-xs rounded-full">Market Leader</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-500 text-xs rounded-full">Global Presence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Our <span class="gradient-text">Core Values</span>
+            </h2>
+            
+            <div class="values-grid">
+                <div class="value-card animate-on-scroll hover-lift">
+                    <div class="value-icon" style="background: rgba(255, 107, 53, 0.1);">
+                        <i class="fas fa-star" style="color: #FF6B35;"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Excellence</h3>
+                    <p class="text-gray-300">
+                        We pursue perfection in every detail, from trip planning to execution, ensuring consistently exceptional experiences for our clients.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-gray-700">
+                        <span class="gradient-text text-sm font-semibold">Quality First</span>
+                    </div>
+                </div>
+                
+                <div class="value-card animate-on-scroll hover-lift">
+                    <div class="value-icon" style="background: rgba(0, 168, 232, 0.1);">
+                        <i class="fas fa-shield-alt" style="color: #00A8E8;"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Integrity</h3>
+                    <p class="text-gray-300">
+                        We operate with transparency, honesty, and ethical business practices, building trust through reliable and consistent service.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-gray-700">
+                        <span class="gradient-text text-sm font-semibold">Trust & Transparency</span>
+                    </div>
+                </div>
+                
+                <div class="value-card animate-on-scroll hover-lift">
+                    <div class="value-icon" style="background: rgba(255, 209, 102, 0.1);">
+                        <i class="fas fa-heart" style="color: #FFD166;"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Passion</h3>
+                    <p class="text-gray-300">
+                        Our love for travel and discovery fuels our commitment to creating meaningful, transformative experiences for every client.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-gray-700">
+                        <span class="gradient-text text-sm font-semibold">Heartfelt Service</span>
+                    </div>
+                </div>
+                
+                <div class="value-card animate-on-scroll hover-lift">
+                    <div class="value-icon" style="background: rgba(6, 214, 160, 0.1);">
+                        <i class="fas fa-lightbulb" style="color: #06D6A0;"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Innovation</h3>
+                    <p class="text-gray-300">
+                        We continuously evolve and adopt new technologies to enhance our services and deliver cutting-edge travel experiences.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-gray-700">
+                        <span class="gradient-text text-sm font-semibold">Forward Thinking</span>
+                    </div>
+                </div>
+                
+                <div class="value-card animate-on-scroll hover-lift">
+                    <div class="value-icon" style="background: rgba(155, 81, 224, 0.1);">
+                        <i class="fas fa-users" style="color: #9B51E0;"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Collaboration</h3>
+                    <p class="text-gray-300">
+                        We work closely with clients, partners, and local communities to create mutually beneficial and culturally respectful experiences.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-gray-700">
+                        <span class="gradient-text text-sm font-semibold">Partnership Approach</span>
+                    </div>
+                </div>
+                
+                <div class="value-card animate-on-scroll hover-lift">
+                    <div class="value-icon" style="background: rgba(45, 206, 122, 0.1);">
+                        <i class="fas fa-leaf" style="color: #2DCE7A;"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Sustainability</h3>
+                    <p class="text-gray-300">
+                        We promote responsible tourism that preserves natural environments, supports local economies, and minimizes carbon footprint.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-gray-700">
+                        <span class="gradient-text text-sm font-semibold">Eco-Conscious</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Culture -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Company <span class="gradient-text">Culture</span>
+            </h2>
+            
+            <div class="culture-grid">
+                <div class="culture-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-orange-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user-graduate text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Continuous Learning</h3>
+                    <p class="text-gray-300">
+                        Our team undergoes regular training and certification programs to stay updated with the latest travel trends and destinations.
+                    </p>
+                </div>
+                
+                <div class="culture-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-blue-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-award text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Recognition & Growth</h3>
+                    <p class="text-gray-300">
+                        We celebrate achievements and provide clear career progression paths for our dedicated team members.
+                    </p>
+                </div>
+                
+                <div class="culture-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-balance-scale text-2xl text-emerald-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Work-Life Balance</h3>
+                    <p class="text-gray-300">
+                        We believe in maintaining healthy work-life balance with flexible schedules and comprehensive wellness programs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Meet Our <span class="gradient-text">Leadership Team</span>
+            </h2>
+            
+            <div class="team-grid">
+                <!-- CEO -->
+                <div class="team-card animate-on-scroll hover-lift">
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <h3 class="text-xl font-bold">Sarah Ahmed</h3>
+                            <p class="text-gray-300 text-sm">Founder & CEO</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            With 20+ years in luxury travel, Sarah founded Another World with a vision to redefine exceptional travel experiences.
+                        </p>
+                        <div class="text-sm text-gray-400 mb-4">
+                            <i class="fas fa-graduation-cap mr-2"></i> MBA, Harvard Business School
+                        </div>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="#" class="text-gray-400 hover:text-orange-500">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-orange-500">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operations Director -->
+                <div class="team-card animate-on-scroll hover-lift">
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <h3 class="text-xl font-bold">Michael Chen</h3>
+                            <p class="text-gray-300 text-sm">Operations Director</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            Michael ensures seamless operations across all our global offices with 15+ years of experience in travel logistics.
+                        </p>
+                        <div class="text-sm text-gray-400 mb-4">
+                            <i class="fas fa-graduation-cap mr-2"></i> MSc Tourism Management, Cornell
+                        </div>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="#" class="text-gray-400 hover:text-orange-500">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Director -->
+                <div class="team-card animate-on-scroll hover-lift">
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <h3 class="text-xl font-bold">Elena Rodriguez</h3>
+                            <p class="text-gray-300 text-sm">Experience Design Director</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            Elena crafts unique travel experiences with her background in cultural anthropology and luxury hospitality.
+                        </p>
+                        <div class="text-sm text-gray-400 mb-4">
+                            <i class="fas fa-graduation-cap mr-2"></i> MA Cultural Studies, University of Barcelona
+                        </div>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="#" class="text-gray-400 hover:text-orange-500">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-orange-500">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-users mr-2"></i> View Full Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Quality <span class="gradient-text">Assurance</span>
+            </h2>
+            
+            <div class="quality-grid">
+                <div class="quality-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-blue-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-check-circle text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Vetted Partners</h3>
+                    <p class="text-gray-300 text-sm">
+                        All hotels, airlines, and service providers undergo rigorous vetting process.
+                    </p>
+                </div>
+                
+                <div class="quality-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-green-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-2xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">24/7 Support</h3>
+                    <p class="text-gray-300 text-sm">
+                        Round-the-clock assistance throughout the travel journey.
+                    </p>
+                </div>
+                
+                <div class="quality-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-orange-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-file-contract text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Transparent Pricing</h3>
+                    <p class="text-gray-300 text-sm">
+                        No hidden fees with detailed cost breakdown provided upfront.
+                    </p>
+                </div>
+                
+                <div class="quality-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-purple-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user-check text-2xl text-purple-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Personal Concierge</h3>
+                    <p class="text-gray-300 text-sm">
+                        Dedicated travel consultant for each client throughout the process.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Recognition -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Awards & <span class="gradient-text">Recognition</span>
+            </h2>
+            
+            <div class="awards-grid">
+                <div class="award-card animate-on-scroll hover-lift">
+                    <div class="text-4xl gradient-text mb-4">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">World Travel Awards</h3>
+                    <p class="text-gray-400 text-sm">Middle East's Leading Luxury Travel Agency 2023</p>
+                </div>
+                
+                <div class="award-card animate-on-scroll hover-lift">
+                    <div class="text-4xl gradient-text mb-4">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Forbes Travel Guide</h3>
+                    <p class="text-gray-400 text-sm">Five-Star Travel Agency Rating 2022-2023</p>
+                </div>
+                
+                <div class="award-card animate-on-scroll hover-lift">
+                    <div class="text-4xl gradient-text mb-4">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Conde Nast Traveler</h3>
+                    <p class="text-gray-400 text-sm">Readers' Choice Awards - Top Travel Specialist</p>
+                </div>
+                
+                <div class="award-card animate-on-scroll hover-lift">
+                    <div class="text-4xl gradient-text mb-4">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Travel + Leisure</h3>
+                    <p class="text-gray-400 text-sm">World's Best Awards - Top 10 Luxury Agencies</p>
+                </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold mb-8 text-center">Industry Certifications</h3>
+                <div class="certifications-grid max-w-4xl mx-auto">
+                    <div class="cert-logo animate-on-scroll hover-lift">
+                        <i class="fas fa-plane text-3xl text-gray-400"></i>
+                    </div>
+                    <div class="cert-logo animate-on-scroll hover-lift">
+                        <i class="fas fa-hotel text-3xl text-gray-400"></i>
+                    </div>
+                    <div class="cert-logo animate-on-scroll hover-lift">
+                        <i class="fas fa-leaf text-3xl text-gray-400"></i>
+                    </div>
+                    <div class="cert-logo animate-on-scroll hover-lift">
+                        <i class="fas fa-shield-alt text-3xl text-gray-400"></i>
+                    </div>
+                    <div class="cert-logo animate-on-scroll hover-lift">
+                        <i class="fas fa-globe text-3xl text-gray-400"></i>
+                    </div>
+                    <div class="cert-logo animate-on-scroll hover-lift">
+                        <i class="fas fa-handshake text-3xl text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Commitment -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Sustainability <span class="gradient-text">Commitment</span>
+            </h2>
+            
+            <div class="sustainability-grid">
+                <div class="sustain-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-tree text-2xl text-emerald-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Carbon Offset Program</h3>
+                    <p class="text-gray-300">
+                        We offset 100% of our operational carbon footprint and offer carbon-neutral travel options for clients.
+                    </p>
+                </div>
+                
+                <div class="sustain-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-hands-helping text-2xl text-emerald-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Community Support</h3>
+                    <p class="text-gray-300">
+                        5% of profits donated to local community development projects in our destination countries.
+                    </p>
+                </div>
+                
+                <div class="sustain-card animate-on-scroll hover-lift">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-recycle text-2xl text-emerald-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Sustainable Partners</h3>
+                    <p class="text-gray-300">
+                        We partner exclusively with eco-certified hotels and responsible tour operators.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Client <span class="gradient-text">Testimonials</span>
+            </h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="testimonial-card animate-on-scroll hover-lift">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Client" 
+                             class="w-16 h-16 rounded-full border-2 border-orange-500 mr-4">
+                        <div>
+                            <h4 class="font-bold text-lg">David Wilson</h4>
+                            <p class="text-gray-400 text-sm">Luxury Safari Experience, Kenya</p>
+                        </div>
+                        <div class="flex text-orange-500 ml-auto text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="client-quote">
+                        "Our family safari with Another World was absolutely perfect. Every detail was meticulously planned, from the luxury tented camps to the expert guides. The team's attention to detail and personalized service made this a truly unforgettable experience."
+                    </p>
+                    <div class="mt-6 text-sm text-gray-400">
+                        <i class="fas fa-calendar mr-2"></i> Traveled: November 2022 | <i class="fas fa-map-marker-alt ml-4 mr-2"></i> Kenya
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="py-16" id="contact">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">
+                Our <span class="gradient-text">Locations</span>
+            </h2>
+            
+            <div class="office-locations animate-on-scroll hover-lift">
+                <h3 class="text-2xl font-bold mb-8 text-center">Global Headquarters & Offices</h3>
+                
+                <div class="contact-info-grid mt-8">
+                    <div class="contact-card hover-lift">
+                        <div class="text-3xl gradient-text mb-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Dubai HQ</h3>
+                        <p class="text-gray-400 text-sm">
+                            Palm Tower, Corniche Road<br>
+                            Dubai, UAE<br>
+                            +971 4 123 4567
+                        </p>
+                    </div>
+                    
+                    <div class="contact-card hover-lift">
+                        <div class="text-3xl gradient-text mb-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">London Office</h3>
+                        <p class="text-gray-400 text-sm">
+                            45 Berkeley Square<br>
+                            London, UK<br>
+                            +44 20 7123 4567
+                        </p>
+                    </div>
+                    
+                    <div class="contact-card hover-lift">
+                        <div class="text-3xl gradient-text mb-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">New York Office</h3>
+                        <p class="text-gray-400 text-sm">
+                            767 5th Avenue<br>
+                            New York, USA<br>
+                            +1 212 555 0123
+                        </p>
+                    </div>
+                    
+                    <div class="contact-card hover-lift">
+                        <div class="text-3xl gradient-text mb-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Singapore Office</h3>
+                        <p class="text-gray-400 text-sm">
+                            Marina Bay Financial Centre<br>
+                            Singapore<br>
+                            +65 6123 4567
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <a href="contact.html" class="btn-primary">
+                        <i class="fas fa-envelope mr-2"></i> Contact All Offices
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-12 pb-8 bg-gradient-to-b from-gray-900/50 to-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 mr-3"></div>
+                        <div class="text-xl font-bold">
+                            <span class="text-white">ANOTHER</span>
+                            <span class="gradient-text">WORLD</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Creating extraordinary travel experiences since 2010.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-gray-400 hover:text-orange-500 transition-colors">Home</a></li>
+                        <li><a href="destinations.html" class="text-gray-400 hover:text-orange-500 transition-colors">Destinations</a></li>
+                        <li><a href="packages.html" class="text-gray-400 hover:text-orange-500 transition-colors">Packages</a></li>
+                        <li><a href="about.html" class="text-orange-400 font-semibold">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-orange-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4 text-white">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-orange-500 mt-1 mr-3"></i>
+                            <span>Palm Tower, Corniche Road, Dubai, UAE</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-orange-500 mr-3"></i>
+                            <span>+971 4 123 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-orange-500 mr-3"></i>
+                            <span>info@anotherworld.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4 text-white">Newsletter</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Subscribe for travel inspiration and exclusive offers
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="form-input rounded-r-none">
+                        <button class="btn-primary rounded-l-none px-4">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="mb-4 md:mb-0">&copy; 2010-2023 Another World Travel Agency. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-orange-500 transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-orange-500 transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-orange-500 transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-gray-400">
+                        <i class="fas fa-certificate text-orange-500 mr-2"></i>
+                        Licensed by Dubai Department of Tourism & Commerce Marketing | License No: DTCM-123456
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+            
+            // Animate counters
+            function animateCounters() {
+                const counters = [
+                    { element: document.getElementById('counter1'), target: 13, suffix: '+' },
+                    { element: document.getElementById('counter2'), target: 50, suffix: 'k+' },
+                    { element: document.getElementById('counter3'), target: 98, suffix: '%' },
+                    { element: document.getElementById('counter4'), target: 75, suffix: '+' }
+                ];
+                
+                counters.forEach(counter => {
+                    if (!counter.element) return;
+                    
+                    let current = 0;
+                    const increment = counter.target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= counter.target) {
+                            current = counter.target;
+                            clearInterval(timer);
+                        }
+                        counter.element.textContent = Math.floor(current) + counter.suffix;
+                    }, 40);
+                });
+            }
+            
+            // Intersection Observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Trigger counter animation when stats are visible
+                        if (entry.target.classList.contains('stat-card')) {
+                            setTimeout(animateCounters, 300);
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Observe all animate-on-scroll elements
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            menuBtn.querySelector('i').classList.remove('fa-times');
+                            menuBtn.querySelector('i').classList.add('fa-bars');
+                        }
+                    }
+                });
+            });
+            
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('footer form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    const email = emailInput.value;
+                    
+                    if (email && validateEmail(email)) {
+                        // Show success message
+                        const submitBtn = this.querySelector('button');
+                        const originalText = submitBtn.innerHTML;
+                        
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i>';
+                        submitBtn.style.background = '#06D6A0';
+                        
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.style.background = '';
+                            emailInput.value = '';
+                            alert('Thank you for subscribing to our newsletter!');
+                        }, 2000);
+                    } else {
+                        emailInput.style.borderColor = '#ef4444';
+                        setTimeout(() => {
+                            emailInput.style.borderColor = '';
+                        }, 2000);
+                    }
+                });
+            }
+            
+            // Email validation
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            // Add hover effects to cards
+            document.querySelectorAll('.team-card, .value-card, .award-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Initialize animations
+            animateCounters();
+        });
+    </script>
+</body>
+</html>
